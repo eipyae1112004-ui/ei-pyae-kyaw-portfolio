@@ -83,7 +83,7 @@ export default function About() {
                 <span className="about__ticket-flag" aria-hidden="true" />
                 <span className="about__ticket-icon">{TICKET_CARDS[i].icon}</span>
                 <h4 className="about__ticket-title">{pt.heading}</h4>
-                <p className="about__ticket-text">{pt.short}</p>
+                <p className="about__ticket-text">{pt.text}</p>
                 <span className="about__ticket-band" aria-hidden="true" />
                 <span className="about__ticket-number">{String(i + 1).padStart(2, '0')}</span>
               </div>
