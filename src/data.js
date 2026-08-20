@@ -54,7 +54,18 @@ export const about = {
   },
   lifestyle: {
     title: 'Beyond the screen',
-    text: "Outside of coding, I'm the person who reorganizes a workflow just because it feels inefficient, and who is quietly proud when an automation saves someone even ten minutes. I'm curious by default — new tools, new frameworks, new gadgets, I want to take them apart and understand how they tick. I care about building technology that considers real people at the edges: seniors, small teams, everyday users who just want something that works without a manual.",
+    intro:
+      "Dear whoever's reading this — thanks for making it this far. Beyond the screen, I'm still pretty much the same person you've seen so far: curious, a little restless, and happiest when something I've touched works a bit better than before.",
+    steps: [
+      {
+        title: 'Curiosity',
+        text: "Outside of coding, I'm the person who reorganizes a workflow just because it feels inefficient. I'm curious by default — new tools, new frameworks, new gadgets, I want to take them apart and understand how they tick.",
+      },
+      {
+        title: 'Care',
+        text: "I'm quietly proud when an automation saves someone even ten minutes. I care about building technology that considers real people at the edges — seniors, small teams, everyday users who just want something that works.",
+      },
+    ],
   },
 }
 

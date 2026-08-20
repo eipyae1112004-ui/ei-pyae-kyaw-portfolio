@@ -1,25 +1,30 @@
 import { useState } from 'react'
 import {
-  FiZap, FiCpu, FiSmartphone, FiTarget, FiPenTool,
-  FiSearch, FiTool, FiCheckCircle, FiPlus, FiMinus,
+  FiZap, FiSearch, FiTool, FiCheckCircle, FiPlus, FiMinus,
 } from 'react-icons/fi'
-import { TbRobot } from 'react-icons/tb'
 import { about, profile } from '../data'
 import smilingImg from '../assets/kath-smiling.jpg'
 import useReveal from '../hooks/useReveal'
 import IDBadge from './IDBadge'
 import './About.css'
 
-const interestIcons = {
-  Automation: <FiZap />,
-  'New Tech': <FiCpu />,
-  Gadgets: <FiSmartphone />,
-  'Problem Solving': <FiTarget />,
-  Robotics: <TbRobot />,
-  'UI/UX': <FiPenTool />,
+const PHILOSOPHY_ICONS = [<FiSearch />, <FiZap />, <FiTool />, <FiCheckCircle />]
+
+function cloudEdgePath(bumpsUp) {
+  const width = 1440
+  const step = 60
+  const peakY = bumpsUp ? 0 : 60
+  const baseY = 30
+  let d = `M0,${bumpsUp ? 60 : 0} L0,${baseY} Q${step / 2},${peakY} ${step},${baseY}`
+  for (let x = step * 2; x <= width; x += step) {
+    d += ` T${x},${baseY}`
+  }
+  d += ` L${width},${bumpsUp ? 60 : 0} Z`
+  return d
 }
 
-const PHILOSOPHY_ICONS = [<FiSearch />, <FiZap />, <FiTool />, <FiCheckCircle />]
+const CLOUD_TOP_PATH = cloudEdgePath(true)
+const CLOUD_BOTTOM_PATH = cloudEdgePath(false)
 
 export default function About() {
   const ref = useReveal()
@@ -98,29 +103,40 @@ export default function About() {
           </div>
         </div>
 
-        {/* ---------- Session 3: beyond the screen ---------- */}
-        <div className="about__beyond reveal reveal-delay-1">
-          <div className="about__beyond-copy">
-            <span className="eyebrow">Off Duty</span>
-            <h3 className="about__beyond-title">
-              Beyond the <span className="gradient-text">screen</span>
-            </h3>
-            <p className="about__beyond-script">Outside of coding —</p>
-            <p className="about__beyond-text">{about.lifestyle.text}</p>
+        {/* ---------- Session 3: beyond the screen — scalloped cloud panel ---------- */}
+        <div className="about__cloud reveal reveal-delay-1">
+          <svg className="about__cloud-edge about__cloud-edge--top" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true">
+            <path d={CLOUD_TOP_PATH} fill="var(--blue-400)" />
+          </svg>
+
+          <div className="about__cloud-body">
+            <div className="about__cloud-icons" aria-hidden="true">
+              <span>💻</span>
+              <span className="about__cloud-mascot">🐼</span>
+              <span>📚</span>
+            </div>
+
+            <span className="eyebrow about__cloud-badge">Beyond the Screen</span>
+            <p className="about__cloud-intro">{about.lifestyle.intro}</p>
+
+            <div className="about__cloud-divider" aria-hidden="true">
+              <span>✦</span>
+            </div>
+
+            <div className="about__cloud-steps">
+              {about.lifestyle.steps.map((step, i) => (
+                <div className="about__cloud-step" key={step.title}>
+                  <span className="about__cloud-step-label">Step {i + 1}</span>
+                  <h4>{step.title}</h4>
+                  <p>{step.text}</p>
+                </div>
+              ))}
+            </div>
           </div>
 
-          <div className="about__beyond-chips">
-            {about.interests.map((tag, i) => (
-              <div
-                className={`about__beyond-chip about__beyond-chip--${(i % 4) + 1}`}
-                key={tag}
-                style={{ '--i': i }}
-              >
-                <span className="about__beyond-chip-icon">{interestIcons[tag]}</span>
-                <span>{tag}</span>
-              </div>
-            ))}
-          </div>
+          <svg className="about__cloud-edge about__cloud-edge--bottom" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true">
+            <path d={CLOUD_BOTTOM_PATH} fill="var(--blue-400)" />
+          </svg>
         </div>
       </div>
     </section>
