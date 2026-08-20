@@ -33,13 +33,21 @@ export default function About() {
   return (
     <section id="about" className="section about" ref={ref}>
       <div className="section-inner">
-        {/* ---------- Session 1: profile — badge centered, meta left, bio right ---------- */}
+        {/* ---------- Combined session: personal info (left) + How I Think (right) ---------- */}
+        <div className="about__combined-header reveal">
+          <h2 className="section-title">
+            The person behind the <span className="gradient-text">code</span>
+          </h2>
+        </div>
+
         <div className="about__intro">
-          <div className="about__intro-meta reveal">
-            <span className="eyebrow">About Me</span>
-            <h2 className="section-title">
-              The person behind the <span className="gradient-text">code</span>
-            </h2>
+          <div className="about__intro-left reveal reveal-delay-1">
+            <IDBadge photo={smilingImg} name={profile.nickname} role="Software Developer" />
+
+            <div className="about__bubble">
+              <span className="about__bubble-tail" aria-hidden="true" />
+              <p>{about.bio}</p>
+            </div>
 
             <div className="about__pill-box">
               <span className="about__pill-label">Education</span>
@@ -62,49 +70,37 @@ export default function About() {
             </div>
           </div>
 
-          <div className="about__intro-badge reveal reveal-delay-1">
-            <IDBadge photo={smilingImg} name={profile.nickname} role="Software Developer" />
-          </div>
+          <div className="about__diagram about__intro-right reveal reveal-delay-2">
+            <span className="eyebrow about__diagram-eyebrow">How I Think</span>
+            <h3 className="about__diagram-title">{about.philosophy.title}</h3>
 
-          <div className="about__intro-bubble reveal reveal-delay-2">
-            <div className="about__bubble">
-              <span className="about__bubble-tail" aria-hidden="true" />
-              <p>{about.bio}</p>
+            <div className="about__accordion">
+              {about.philosophy.points.map((pt, i) => {
+                const isOpen = openIndex === i
+                return (
+                  <div className={`about__accordion-item${isOpen ? ' about__accordion-item--open' : ''}`} key={pt.heading}>
+                    <button
+                      type="button"
+                      className="about__accordion-head"
+                      onClick={() => setOpenIndex(isOpen ? -1 : i)}
+                      aria-expanded={isOpen}
+                    >
+                      <span className="about__accordion-badge">{PHILOSOPHY_ICONS[i]}</span>
+                      <span className="about__accordion-title">{pt.heading}</span>
+                      <span className="about__accordion-toggle">{isOpen ? <FiMinus /> : <FiPlus />}</span>
+                    </button>
+                    <div className="about__accordion-body">
+                      <p>{pt.text}</p>
+                    </div>
+                  </div>
+                )
+              })}
             </div>
           </div>
         </div>
 
-        {/* ---------- Session 2: philosophy accordion ---------- */}
-        <div className="about__diagram reveal reveal-delay-1">
-          <span className="eyebrow about__diagram-eyebrow">How I Think</span>
-          <h3 className="about__diagram-title">{about.philosophy.title}</h3>
-
-          <div className="about__accordion">
-            {about.philosophy.points.map((pt, i) => {
-              const isOpen = openIndex === i
-              return (
-                <div className={`about__accordion-item${isOpen ? ' about__accordion-item--open' : ''}`} key={pt.heading}>
-                  <button
-                    type="button"
-                    className="about__accordion-head"
-                    onClick={() => setOpenIndex(isOpen ? -1 : i)}
-                    aria-expanded={isOpen}
-                  >
-                    <span className="about__accordion-badge">{PHILOSOPHY_ICONS[i]}</span>
-                    <span className="about__accordion-title">{pt.heading}</span>
-                    <span className="about__accordion-toggle">{isOpen ? <FiMinus /> : <FiPlus />}</span>
-                  </button>
-                  <div className="about__accordion-body">
-                    <p>{pt.text}</p>
-                  </div>
-                </div>
-              )
-            })}
-          </div>
-        </div>
-
         {/* ---------- Session 3: beyond the screen — scalloped cloud panel ---------- */}
-        <div className="about__cloud reveal reveal-delay-1">
+        {/* <div className="about__cloud reveal reveal-delay-1">
           <svg className="about__cloud-edge about__cloud-edge--top" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true">
             <path d={CLOUD_TOP_PATH} fill="var(--blue-400)" />
           </svg>
@@ -137,7 +133,7 @@ export default function About() {
           <svg className="about__cloud-edge about__cloud-edge--bottom" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true">
             <path d={CLOUD_BOTTOM_PATH} fill="var(--blue-400)" />
           </svg>
-        </div>
+        </div> */}
       </div>
     </section>
   )

@@ -51,23 +51,24 @@ export default function Hero() {
           <div className="hero__intro">
             <p className="hero__greeting">Hi, I'm</p>
             <h1 className="hero__name">
-              {profile.name} <span className="gradient-text">({profile.nickname})</span>
-            </h1>
+              {profile.name}</h1>
+              <h1><span className="gradient-text">({profile.nickname})</span></h1> 
+            
             <h2 className="hero__role">
               I'm a <span className="hero__typed">{typed}</span>
               <span className="hero__cursor" aria-hidden="true">|</span>
             </h2>
           </div>
 
-          <div className="hero__portrait">
-            <svg className="hero__arc-text" viewBox="0 0 300 90" aria-hidden="true">
+          <div className="hero__portrait" >
+            {/* <svg className="hero__arc-text" viewBox="25 -50 250 80" aria-hidden="true" >
               <path id="heroArcPath" d="M 20,85 A 130,130 0 0 1 280,85" fill="none" />
               <text>
                 <textPath href="#heroArcPath" startOffset="50%" textAnchor="middle">
                   {profile.arcText}
                 </textPath>
               </text>
-            </svg>
+            </svg> */}
 
             <span className="hero__orbit-ring hero__orbit-ring--1" aria-hidden="true" />
             <span className="hero__orbit-ring hero__orbit-ring--2" aria-hidden="true" />
@@ -80,7 +81,7 @@ export default function Hero() {
             </div>
           </div>
 
-          <div className="hero__quicklinks">
+          <div className="hero__quicklinks" >
             <a href={`tel:${profile.phone.replace(/\s+/g, '')}`} className="hero__quicklink">
               <FiPhone size={16} /> {profile.phone}
             </a>
@@ -113,9 +114,9 @@ export default function Hero() {
         </div>
       </div>
 
-      <a href="#about" className="hero__scroll" aria-label="Scroll to About section">
+      {/* <a href="#about" className="hero__scroll" aria-label="Scroll to About section">
         <HiArrowDown size={20} />
-      </a>
+      </a> */}
 
       <svg className="hero__wave" viewBox="0 0 1440 100" preserveAspectRatio="none" aria-hidden="true">
         <path

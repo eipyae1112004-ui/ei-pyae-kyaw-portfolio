@@ -2,42 +2,40 @@
   background: linear-gradient(180deg, var(--ice-50) 0%, var(--sky-100) 55%, var(--ice-50) 100%);
 }
 
-/* ============ Session 1: profile — education/interests | badge | bio ============ */
+/* ============ Combined session: personal info (left) + How I Think (right) ============ */
+
+.about__combined-header {
+  text-align: center;
+  margin-bottom: clamp(2rem, 5vw, 3rem);
+}
 
 .about__intro {
   display: grid;
-  grid-template-columns: 0.9fr 0.85fr 0.9fr;
-  gap: clamp(1.5rem, 4vw, 2.5rem);
-  align-items: center;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: clamp(2rem, 5vw, 3.5rem);
+  align-items: start;
   margin-bottom: clamp(4rem, 9vw, 6rem);
 }
 
-.about__intro-meta {
+.about__intro-left {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
 }
 
-.about__intro-badge {
-  display: flex;
-  justify-content: center;
-}
-
-.about__intro-bubble {
-  display: flex;
-  justify-content: center;
+.about__intro-right {
+  padding-top: 0.5rem;
 }
 
 .about__pill-box {
-  margin-top: 1.2rem;
+  width: 100%;
+  max-width: 300px;
   background: var(--white);
   border-radius: var(--radius-md);
   padding: 1rem 1.2rem;
   box-shadow: var(--shadow-card);
   border: 2px solid rgba(217, 143, 163, 0.15);
-}
-
-.about__intro-meta .about__pill-box:first-of-type {
-  margin-top: 1.6rem;
 }
 
 .about__pill-label {
@@ -106,14 +104,14 @@
 
 .about__bubble-tail {
   position: absolute;
-  top: 50%;
-  left: -8px;
+  top: -8px;
+  left: 40px;
   width: 16px;
   height: 16px;
   background: var(--white);
   border-left: 1px solid rgba(217, 143, 163, 0.12);
-  border-bottom: 1px solid rgba(217, 143, 163, 0.12);
-  transform: translateY(-50%) rotate(45deg);
+  border-top: 1px solid rgba(217, 143, 163, 0.12);
+  transform: rotate(45deg);
 }
 
 .about__bubble p {
@@ -122,11 +120,10 @@
   color: var(--ink-700);
 }
 
-/* ============ Session 2: philosophy pathway ============ */
+/* ============ How I Think (right column of the combined session) ============ */
 
 .about__diagram {
   text-align: center;
-  margin-bottom: clamp(4rem, 9vw, 6rem);
 }
 
 .about__diagram-eyebrow {
@@ -329,17 +326,8 @@
     text-align: center;
   }
 
-  .about__intro-meta {
-    align-items: center;
-    order: 2;
-  }
-
-  .about__intro-badge {
-    order: 1;
-  }
-
-  .about__intro-bubble {
-    order: 3;
+  .about__intro-right {
+    max-width: 600px;
   }
 
   .about__cloud-steps {
