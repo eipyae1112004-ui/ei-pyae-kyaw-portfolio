@@ -1,5 +1,6 @@
 import { about, profile } from '../data'
-import profileImg from '../assets/profile.png'
+import smilingImg from '../assets/kath-smiling.jpg'
+import laptopImg from '../assets/kath-laptop.jpg'
 import useReveal from '../hooks/useReveal'
 import './About.css'
 
@@ -11,10 +12,10 @@ export default function About() {
       <div className="section-inner about__grid">
         <div className="about__gallery reveal">
           <div className="about__photo about__photo--oval">
-            <img src={profileImg} alt={`${profile.name} smiling`} />
+            <img src={smilingImg} alt={`${profile.name} smiling`} />
           </div>
           <div className="about__photo about__photo--square">
-            <img src={profileImg} alt={`${profile.name} at work`} />
+            <img src={laptopImg} alt={`${profile.name} working at her laptop`} />
           </div>
           <div className="about__blob" aria-hidden="true" />
           <div className="about__dots" aria-hidden="true" />

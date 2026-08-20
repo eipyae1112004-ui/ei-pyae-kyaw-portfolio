@@ -2,7 +2,8 @@ import { useEffect, useState } from 'react'
 import {
   FiCode, FiDatabase, FiCpu, FiPenTool, FiLayout,
 } from 'react-icons/fi'
-import { SiDocker, SiLinux, SiGithub, SiAmazonaws, SiFirebase, SiArduino, SiFigma } from 'react-icons/si'
+import { SiDocker, SiLinux, SiGithub, SiFirebase, SiArduino, SiFigma } from 'react-icons/si'
+import { TbBrandAws } from 'react-icons/tb'
 import { coreSkills, technicalSkills, designTools } from '../data'
 import useReveal from '../hooks/useReveal'
 import './Skills.css'
@@ -11,7 +12,7 @@ const toolIcons = {
   Docker: <SiDocker />,
   Linux: <SiLinux />,
   GitHub: <SiGithub />,
-  AWS: <SiAmazonaws />,
+  AWS: <TbBrandAws />,
   Firebase: <SiFirebase />,
   'Arduino / ESP32': <SiArduino />,
 }
