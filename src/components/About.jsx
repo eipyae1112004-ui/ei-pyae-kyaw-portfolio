@@ -44,12 +44,12 @@ export default function About() {
           <div className="about__intro-left reveal reveal-delay-1">
             <IDBadge photo={smilingImg} name={profile.nickname} role="Software Developer" />
 
-            <div className="about__bubble">
+            {/* <div className="about__bubble">
               <span className="about__bubble-tail" aria-hidden="true" />
               <p>{about.bio}</p>
-            </div>
+            </div> */}
 
-            <div className="about__pill-box">
+            {/* <div className="about__pill-box">
               <span className="about__pill-label">Education</span>
               <div className="about__education">
                 <strong>{about.education.period}</strong>
@@ -67,7 +67,7 @@ export default function About() {
                   <span className="about__tag" key={tag}>#{tag}</span>
                 ))}
               </div>
-            </div>
+            </div> */}
           </div>
 
           <div className="about__diagram about__intro-right reveal reveal-delay-2">
