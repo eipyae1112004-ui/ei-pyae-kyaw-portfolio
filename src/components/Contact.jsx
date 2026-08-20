@@ -33,6 +33,13 @@ export default function Contact() {
 
   return (
     <section id="contact" className="section contact" ref={ref}>
+      <svg className="contact__wave" viewBox="0 0 1440 100" preserveAspectRatio="none" aria-hidden="true">
+        <path
+          d="M0,55 Q120,85 240,55 T480,55 T720,55 T960,55 T1200,55 T1440,55 L1440,0 L0,0 Z"
+          fill="var(--ice-50)"
+        />
+      </svg>
+
       <div className="contact__bg" aria-hidden="true">
         <span className="contact__blob contact__blob--1" />
         <span className="contact__blob contact__blob--2" />

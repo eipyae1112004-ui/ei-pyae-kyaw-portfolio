@@ -78,6 +78,9 @@ export default function Hero() {
           <span className="hero__star hero__star--1" aria-hidden="true">✦</span>
           <span className="hero__star hero__star--2" aria-hidden="true">✦</span>
           <span className="hero__star hero__star--3" aria-hidden="true">✧</span>
+          <span className="hero__orbit-chip hero__orbit-chip--1" aria-hidden="true">⚙️</span>
+          <span className="hero__orbit-chip hero__orbit-chip--2" aria-hidden="true">💻</span>
+          <span className="hero__orbit-chip hero__orbit-chip--3" aria-hidden="true">🤖</span>
           <div className="hero__portrait-frame">
             <img src={profileImg} alt={`${profile.name} portrait`} />
           </div>
@@ -106,6 +109,13 @@ export default function Hero() {
       <a href="#about" className="hero__scroll" aria-label="Scroll to About section">
         <HiArrowDown size={20} />
       </a>
+
+      <svg className="hero__wave" viewBox="0 0 1440 100" preserveAspectRatio="none" aria-hidden="true">
+        <path
+          d="M0,45 Q120,15 240,45 T480,45 T720,45 T960,45 T1200,45 T1440,45 L1440,100 L0,100 Z"
+          fill="var(--ice-50)"
+        />
+      </svg>
     </section>
   )
 }

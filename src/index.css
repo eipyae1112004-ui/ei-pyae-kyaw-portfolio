@@ -16,13 +16,14 @@
   --ink-500: #64748b;
   --ink-300: #b6c4d6;
 
-  --shadow-soft: 0 20px 45px -20px rgba(10, 31, 68, 0.35);
-  --shadow-card: 0 10px 30px -12px rgba(10, 31, 68, 0.25);
-  --radius-lg: 28px;
-  --radius-md: 18px;
-  --radius-sm: 10px;
+  --shadow-soft: 7px 7px 0 rgba(10, 31, 68, 0.1), 0 22px 40px -20px rgba(10, 31, 68, 0.3);
+  --shadow-card: 5px 5px 0 rgba(10, 31, 68, 0.08), 0 10px 26px -14px rgba(10, 31, 68, 0.22);
+  --radius-lg: 32px;
+  --radius-md: 22px;
+  --radius-sm: 14px;
 
-  --font-heading: 'Poppins', 'Inter', sans-serif;
+  --font-heading: 'Fredoka', 'Poppins', sans-serif;
+  --font-script: 'Caveat', cursive;
   --font-body: 'Inter', sans-serif;
 
   color-scheme: light;
@@ -91,26 +92,23 @@ h1, h2, h3, h4 {
 .eyebrow {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  font-size: 0.8rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
+  justify-content: center;
+  font-family: var(--font-script);
+  font-size: 1.2rem;
   font-weight: 600;
   color: var(--blue-600);
-  margin-bottom: 0.9rem;
-}
-
-.eyebrow::before {
-  content: '';
-  width: 26px;
-  height: 2px;
-  background: var(--blue-500);
-  display: inline-block;
+  border: 2px solid var(--blue-400);
+  background: var(--white);
+  padding: 0.15rem 1.4rem 0.4rem;
+  border-radius: 999px;
+  margin-bottom: 1.1rem;
+  box-shadow: 3px 3px 0 rgba(37, 99, 235, 0.12);
 }
 
 .section-title {
+  font-family: var(--font-heading);
   font-size: clamp(1.9rem, 4vw, 2.6rem);
-  font-weight: 700;
+  font-weight: 600;
   margin-bottom: 0.85rem;
 }
 
@@ -154,9 +152,9 @@ h1, h2, h3, h4 {
 }
 
 .btn-ghost {
-  background: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.75);
   color: var(--navy-800);
-  border: 1.5px solid var(--blue-400);
+  border: 2px solid var(--blue-400);
 }
 
 .btn-ghost:hover {

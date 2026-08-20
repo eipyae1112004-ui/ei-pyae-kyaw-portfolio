@@ -23,7 +23,7 @@
 
 .skills__panel {
   background: var(--ice-50);
-  border: 1px solid rgba(37, 99, 235, 0.08);
+  border: 2px solid rgba(37, 99, 235, 0.15);
   border-radius: var(--radius-lg);
   padding: 2rem 1.7rem;
   transition: transform 0.35s ease, box-shadow 0.35s ease;
