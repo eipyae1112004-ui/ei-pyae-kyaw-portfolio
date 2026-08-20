@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { FiGithub, FiChevronLeft, FiChevronRight } from 'react-icons/fi'
+import { FiGithub } from 'react-icons/fi'
 import { projects, profile } from '../data'
 import useReveal from '../hooks/useReveal'
 import './Projects.css'
@@ -9,9 +9,6 @@ export default function Projects() {
   const [index, setIndex] = useState(0)
   const total = projects.length
   const active = projects[index]
-
-  const next = () => setIndex((i) => (i + 1) % total)
-  const prev = () => setIndex((i) => (i - 1 + total) % total)
 
   return (
     <section id="projects" className="section projects" ref={ref}>
@@ -23,11 +20,25 @@ export default function Projects() {
         <p className="section-subtitle reveal">
           A snapshot of what I've shipped — from production automation at work to
           independent explorations in AI, embedded systems, and full-stack apps.
-          Browse the stack, or use the arrows to step through.
+          Click any card in the stack to bring it forward.
         </p>
 
         <div className="projects__carousel reveal reveal-delay-1">
-          <div className="projects__detail" key={active.id}>
+          <div className="projects__detail">
+            <svg className="projects__detail-blob" viewBox="0 0 240 220" preserveAspectRatio="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M28,96 C20,58 48,18 100,10 C160,1 214,22 228,66 C240,102 224,132 196,148 C182,156 172,148 158,158 C142,170 130,182 108,176 C88,171 88,156 70,148 C34,132 34,128 28,96 Z"
+                fill="url(#projectsBlobGrad)"
+              />
+              <defs>
+                <linearGradient id="projectsBlobGrad" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stopColor="var(--sky-100)" />
+                  <stop offset="55%" stopColor="var(--sky-300)" />
+                  <stop offset="100%" stopColor="var(--blue-400)" />
+                </linearGradient>
+              </defs>
+            </svg>
+
             <span className="projects__detail-year">{active.year}</span>
             <h3 className="projects__detail-title">{active.title}</h3>
             <p className="projects__detail-subtitle">{active.subtitle}</p>
@@ -44,16 +55,7 @@ export default function Projects() {
               <a href={active.github} target="_blank" rel="noreferrer" className="btn btn-primary">
                 <FiGithub /> View on GitHub
               </a>
-
-              <div className="projects__controls">
-                <button type="button" onClick={prev} aria-label="Previous project" className="projects__nav-btn">
-                  <FiChevronLeft size={18} />
-                </button>
-                <span className="projects__counter">{index + 1} / {total}</span>
-                <button type="button" onClick={next} aria-label="Next project" className="projects__nav-btn">
-                  <FiChevronRight size={18} />
-                </button>
-              </div>
+              <span className="projects__counter">{index + 1} / {total}</span>
             </div>
           </div>
 

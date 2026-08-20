@@ -61,6 +61,10 @@ export default function About() {
               <div className="about__diagram-stage">
                 {about.philosophy.points.map((pt, i) => (
                   <div className="about__diagram-item" key={pt.heading}>
+                    <svg className="about__diagram-connector" viewBox="0 0 26 16" preserveAspectRatio="none" aria-hidden="true">
+                      <circle cx="1" cy="8" r="2.2" fill="var(--blue-500)" />
+                      <path d="M1,8 L4,8 Q4,2 10,2 L16,2 Q22,2 22,8 L26,8" fill="none" stroke="var(--blue-400)" strokeWidth="1.6" strokeLinecap="round" />
+                    </svg>
                     <span className="about__diagram-index">{String(i + 1).padStart(2, '0')}</span>
                     <h4>{pt.heading}</h4>
                     <p>{pt.text}</p>
@@ -68,6 +72,10 @@ export default function About() {
                 ))}
 
                 <div className="about__diagram-center">
+                  <svg className="about__diagram-connector about__diagram-connector--center" viewBox="0 0 34 16" preserveAspectRatio="none" aria-hidden="true">
+                    <circle cx="1" cy="8" r="2.2" fill="var(--blue-500)" />
+                    <path d="M1,8 L6,8 Q6,2 12,2 L22,2 Q30,2 30,8 L34,8" fill="none" stroke="var(--blue-400)" strokeWidth="1.6" strokeLinecap="round" />
+                  </svg>
                   <div className="about__diagram-center-photo">
                     <img src={laptopImg} alt={`${profile.name} working`} />
                   </div>

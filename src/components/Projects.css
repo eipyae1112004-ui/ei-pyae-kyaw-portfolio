@@ -18,13 +18,15 @@
   animation: fadeInUp 0.5s ease both;
 }
 
-.projects__detail::before {
-  content: '';
+.projects__detail-blob {
   position: absolute;
   z-index: -1;
-  inset: -2.2rem -1rem -2.2rem -3.8rem;
-  background: linear-gradient(130deg, var(--sky-100) 0%, var(--sky-300) 55%, var(--blue-400) 100%);
-  border-radius: 38% 62% 58% 42% / 48% 42% 58% 52%;
+  top: -2.2rem;
+  bottom: -2.2rem;
+  left: -3.8rem;
+  right: -1rem;
+  width: auto;
+  height: auto;
 }
 
 .projects__detail-year {
@@ -81,38 +83,13 @@
   gap: 1.4rem;
 }
 
-.projects__controls {
-  display: flex;
-  align-items: center;
-  gap: 0.8rem;
-}
-
-.projects__nav-btn {
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--white);
-  color: var(--navy-800);
-  border: 1px solid rgba(37, 99, 235, 0.15);
-  box-shadow: var(--shadow-card);
-  transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease;
-}
-
-.projects__nav-btn:hover {
-  background: var(--blue-600);
-  color: var(--white);
-  transform: translateY(-2px);
-}
-
 .projects__counter {
   font-size: 0.85rem;
   font-weight: 600;
-  color: var(--ink-500);
-  min-width: 3.2em;
-  text-align: center;
+  color: var(--blue-700, var(--blue-600));
+  background: rgba(255, 255, 255, 0.7);
+  padding: 0.45rem 0.9rem;
+  border-radius: 999px;
 }
 
 /* ---------- Right: overlapping card stack ---------- */
@@ -138,7 +115,7 @@
   display: flex;
   flex-direction: column;
   cursor: pointer;
-  transition: transform 0.45s cubic-bezier(.16,.84,.44,1), opacity 0.45s ease, box-shadow 0.3s ease;
+  transition: box-shadow 0.25s ease;
   transform:
     translate(calc(var(--depth) * 22px), calc(var(--depth) * 18px))
     scale(calc(1 - var(--depth) * 0.055))
@@ -261,7 +238,10 @@
     padding-left: 1.8rem;
   }
 
-  .projects__detail::before {
-    inset: -1.8rem -0.5rem -1.8rem -1.2rem;
+  .projects__detail-blob {
+    top: -1.8rem;
+    bottom: -1.8rem;
+    left: -1.2rem;
+    right: -0.5rem;
   }
 }

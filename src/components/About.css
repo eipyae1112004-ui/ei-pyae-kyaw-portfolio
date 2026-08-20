@@ -194,28 +194,14 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.about__diagram-item::before {
-  content: '';
+.about__diagram-connector {
   position: absolute;
   top: 50%;
-  left: -1.6rem;
-  width: 1.6rem;
-  height: 2px;
-  background: linear-gradient(90deg, var(--blue-400), var(--sky-300));
+  left: -1.62rem;
+  width: 1.62rem;
+  height: 1rem;
   transform: translateY(-50%);
-}
-
-.about__diagram-item::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: -1.6rem;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--blue-500);
-  transform: translate(-50%, -50%);
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.16);
+  overflow: visible;
 }
 
 .about__diagram-item:hover {
@@ -257,27 +243,12 @@
   padding-top: 0.3rem;
 }
 
-.about__diagram-center::before {
-  content: '';
-  position: absolute;
+.about__diagram-connector--center {
   top: 55px;
-  left: -2.1rem;
-  width: 2.1rem;
-  height: 2px;
-  background: linear-gradient(90deg, var(--blue-400), var(--sky-300));
-}
-
-.about__diagram-center::after {
-  content: '';
-  position: absolute;
-  top: 55px;
-  left: -2.1rem;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--blue-500);
-  transform: translate(-50%, -50%);
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.16);
+  left: -2.12rem;
+  width: 2.12rem;
+  height: 1rem;
+  transform: none;
 }
 
 .about__diagram-center-photo {
