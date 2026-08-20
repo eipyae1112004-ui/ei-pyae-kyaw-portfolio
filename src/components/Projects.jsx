@@ -58,6 +58,8 @@ export default function Projects() {
           </div>
 
           <div className="projects__stack">
+            <span className="projects__stack-dot projects__stack-dot--1" aria-hidden="true" />
+            <span className="projects__stack-dot projects__stack-dot--2" aria-hidden="true" />
             {projects.map((project, i) => {
               const depth = (i - index + total) % total
               if (depth > 3) return null

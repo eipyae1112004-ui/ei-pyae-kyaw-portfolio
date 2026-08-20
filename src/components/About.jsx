@@ -60,23 +60,41 @@ export default function About() {
 
               <div className="about__diagram-stage">
                 <svg className="about__diagram-lines" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
-                  <path d="M18,14 C36,14 36,42 46,46" fill="none" stroke="var(--blue-400)" strokeWidth="1.1" strokeLinecap="round" />
-                  <path d="M82,14 C64,14 64,42 54,46" fill="none" stroke="var(--blue-400)" strokeWidth="1.1" strokeLinecap="round" />
-                  <path d="M18,86 C36,86 36,58 46,54" fill="none" stroke="var(--blue-400)" strokeWidth="1.1" strokeLinecap="round" />
-                  <path d="M82,86 C64,86 64,58 54,54" fill="none" stroke="var(--blue-400)" strokeWidth="1.1" strokeLinecap="round" />
+                  <path d="M50,2 L50,96" fill="none" stroke="var(--blue-400)" strokeWidth="1" strokeLinecap="round" />
+                  <path d="M50,16 C60,16 60,16 74,16" fill="none" stroke="var(--blue-400)" strokeWidth="1" strokeLinecap="round" />
+                  <path d="M50,49 C40,49 40,49 26,49" fill="none" stroke="var(--blue-400)" strokeWidth="1" strokeLinecap="round" />
+                  <path d="M50,49 C60,49 60,49 74,49" fill="none" stroke="var(--blue-400)" strokeWidth="1" strokeLinecap="round" />
+                  <path d="M50,82 C40,82 40,82 26,82" fill="none" stroke="var(--blue-400)" strokeWidth="1" strokeLinecap="round" />
+                  <path d="M50,82 C60,82 60,82 74,82" fill="none" stroke="var(--blue-400)" strokeWidth="1" strokeLinecap="round" />
                 </svg>
+
+                <div className="about__diagram-item about__diagram-item--1">
+                  <span className="about__diagram-index">01</span>
+                  <h4>{about.philosophy.points[0].heading}</h4>
+                  <p>{about.philosophy.points[0].text}</p>
+                </div>
+
+                <div className="about__diagram-item about__diagram-item--2">
+                  <span className="about__diagram-index">02</span>
+                  <h4>{about.philosophy.points[1].heading}</h4>
+                  <p>{about.philosophy.points[1].text}</p>
+                </div>
+
+                <div className="about__diagram-item about__diagram-item--3">
+                  <span className="about__diagram-index">03</span>
+                  <h4>{about.philosophy.points[2].heading}</h4>
+                  <p>{about.philosophy.points[2].text}</p>
+                </div>
+
+                <div className="about__diagram-item about__diagram-item--4">
+                  <span className="about__diagram-index">04</span>
+                  <h4>{about.philosophy.points[3].heading}</h4>
+                  <p>{about.philosophy.points[3].text}</p>
+                </div>
 
                 <div className="about__diagram-center">
                   <img src={laptopImg} alt={`${profile.name} working`} />
                 </div>
-
-                {about.philosophy.points.map((pt, i) => (
-                  <div className={`about__diagram-item about__diagram-item--${i + 1}`} key={pt.heading}>
-                    <span className="about__diagram-index">{String(i + 1).padStart(2, '0')}</span>
-                    <h4>{pt.heading}</h4>
-                    <p>{pt.text}</p>
-                  </div>
-                ))}
               </div>
             </div>
           </div>
