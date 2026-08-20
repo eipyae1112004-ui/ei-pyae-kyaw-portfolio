@@ -1,6 +1,6 @@
 .contact {
   position: relative;
-  background: radial-gradient(circle at 50% 0%, #0f2a57 0%, var(--navy-800) 55%, var(--navy-900) 100%);
+  background: radial-gradient(circle at 50% 0%, #8a6248 0%, var(--navy-800) 55%, var(--navy-900) 100%);
   text-align: center;
   overflow: hidden;
 }
@@ -9,7 +9,7 @@
   color: var(--sky-300);
   justify-content: center;
   background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(125, 211, 252, 0.5);
+  border-color: rgba(244, 212, 220, 0.5);
   box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.15);
 }
 

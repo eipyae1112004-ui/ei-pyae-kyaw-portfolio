@@ -4,7 +4,7 @@
   display: flex;
   align-items: center;
   overflow: hidden;
-  background: radial-gradient(circle at 15% 20%, #0f2a57 0%, var(--navy-800) 45%, var(--navy-900) 100%);
+  background: radial-gradient(circle at 15% 20%, #8a6248 0%, var(--navy-800) 45%, var(--navy-900) 100%);
   padding: clamp(6rem, 10vw, 3rem) clamp(1.5rem, 6vw, 6rem);
 }
 
@@ -30,8 +30,8 @@
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(rgba(125, 211, 252, 0.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(125, 211, 252, 0.06) 1px, transparent 1px);
+    linear-gradient(rgba(244, 212, 220, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(244, 212, 220, 0.06) 1px, transparent 1px);
   background-size: 46px 46px;
   mask-image: radial-gradient(circle at 30% 30%, black, transparent 75%);
 }
@@ -168,7 +168,7 @@
   justify-content: center;
   color: var(--sky-300);
   background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(125, 211, 252, 0.5);
+  border-color: rgba(244, 212, 220, 0.5);
   box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.15);
 }
 
@@ -190,7 +190,7 @@
 .hero__actions .btn-ghost {
   background: rgba(255, 255, 255, 0.08);
   color: var(--white);
-  border-color: rgba(125, 211, 252, 0.5);
+  border-color: rgba(244, 212, 220, 0.5);
 }
 
 .hero__actions .btn-ghost:hover {
@@ -232,7 +232,7 @@
 .hero__orbit-ring {
   position: absolute;
   inset: -22px;
-  border: 1.5px solid rgba(125, 211, 252, 0.45);
+  border: 1.5px solid rgba(244, 212, 220, 0.45);
   border-radius: 50%;
   animation: spinSlow linear infinite;
 }
@@ -244,7 +244,7 @@
 
 .hero__orbit-ring--2 {
   inset: -34px;
-  border-color: rgba(59, 130, 246, 0.3);
+  border-color: rgba(226, 163, 181, 0.3);
   transform: rotate(10deg) scaleY(0.88);
   animation-duration: 30s;
   animation-direction: reverse;

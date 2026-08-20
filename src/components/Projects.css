@@ -108,7 +108,7 @@
   width: 100%;
   text-align: left;
   background: var(--white);
-  border: 2px solid rgba(37, 99, 235, 0.15);
+  border: 2px solid rgba(217, 143, 163, 0.15);
   border-radius: var(--radius-lg);
   padding: 1.6rem 1.6rem 1.4rem;
   box-shadow: var(--shadow-card);
@@ -181,7 +181,7 @@
   font-size: 0.72rem;
   font-weight: 700;
   color: var(--blue-600);
-  background: rgba(37, 99, 235, 0.08);
+  background: rgba(217, 143, 163, 0.08);
   padding: 0.22rem 0.55rem;
   border-radius: 999px;
   align-self: flex-start;

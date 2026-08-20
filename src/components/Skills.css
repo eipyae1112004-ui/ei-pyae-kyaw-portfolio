@@ -23,7 +23,7 @@
 
 .skills__panel {
   background: var(--ice-50);
-  border: 2px solid rgba(37, 99, 235, 0.15);
+  border: 2px solid rgba(217, 143, 163, 0.15);
   border-radius: var(--radius-lg);
   padding: 2rem 1.7rem;
   transition: transform 0.35s ease, box-shadow 0.35s ease;
@@ -83,7 +83,7 @@
 .skill-bar__track {
   height: 8px;
   border-radius: 999px;
-  background: rgba(37, 99, 235, 0.1);
+  background: rgba(217, 143, 163, 0.1);
   overflow: hidden;
 }
 
@@ -117,7 +117,7 @@
   padding: 0.42rem 0.85rem;
   border-radius: 999px;
   background: var(--white);
-  border: 1px solid rgba(37, 99, 235, 0.15);
+  border: 1px solid rgba(217, 143, 163, 0.15);
   font-size: 0.82rem;
   color: var(--ink-700);
   transition: all 0.25s ease;
@@ -132,7 +132,7 @@
 
 .skills__chip--primary {
   background: linear-gradient(120deg, rgba(37,99,235,0.1), rgba(125,211,252,0.15));
-  border-color: rgba(37, 99, 235, 0.25);
+  border-color: rgba(217, 143, 163, 0.25);
   font-weight: 500;
   color: var(--navy-800);
 }
@@ -154,7 +154,7 @@
   align-items: center;
   gap: 0.55rem;
   background: var(--white);
-  border: 1px solid rgba(37, 99, 235, 0.1);
+  border: 1px solid rgba(217, 143, 163, 0.1);
   border-radius: var(--radius-sm);
   padding: 0.65rem 0.75rem;
   font-size: 0.85rem;
@@ -177,7 +177,7 @@
   display: flex;
   align-items: flex-start;
   gap: 0.6rem;
-  background: rgba(37, 99, 235, 0.06);
+  background: rgba(217, 143, 163, 0.06);
   border-radius: var(--radius-sm);
   padding: 0.85rem;
   font-size: 0.82rem;
