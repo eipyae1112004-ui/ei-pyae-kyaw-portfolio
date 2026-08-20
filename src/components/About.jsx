@@ -18,6 +18,13 @@ const interestIcons = {
   'UI/UX': <FiPenTool />,
 }
 
+const PINWHEEL_LAYOUT = [
+  { rot: '-14deg', tx: '4px', ty: '-54px', z: 2, bg: 'var(--sky-100)', fg: 'var(--navy-800)' },
+  { rot: '-4deg', tx: '42px', ty: '-26px', z: 3, bg: 'var(--sky-300)', fg: 'var(--navy-800)' },
+  { rot: '6deg', tx: '78px', ty: '10px', z: 6, bg: 'var(--blue-400)', fg: 'var(--white)' },
+  { rot: '17deg', tx: '104px', ty: '48px', z: 7, bg: 'linear-gradient(135deg, var(--blue-600), var(--navy-700))', fg: 'var(--white)' },
+]
+
 export default function About() {
   const ref = useReveal()
 
@@ -65,64 +72,34 @@ export default function About() {
           </div>
         </div>
 
-        {/* ---------- Session 2: philosophy pathway ---------- */}
+        {/* ---------- Session 2: philosophy pinwheel — circle + hover-reveal cards ---------- */}
         <div className="about__diagram reveal reveal-delay-1">
           <span className="eyebrow about__diagram-eyebrow">How I Think</span>
           <h3 className="about__diagram-title">{about.philosophy.title}</h3>
 
-          <div className="about__diagram-stage">
-            <svg className="about__diagram-lines" viewBox="0 0 100 140" preserveAspectRatio="none" aria-hidden="true">
-              <path
-                d="
-                  M62,0 L62,10 Q62,16 56,16 L50,16
-                  M50,16 L50,18 Q50,24 56,24 L76,24
-                  M50,24 L50,52 Q50,58 44,58 L22,58
-                  M50,52 Q50,58 56,58 L78,58
-                  M50,58 L50,114
-                  M50,114 Q50,120 44,120 L22,120
-                  M50,120 L50,130 Q50,136 56,136 L60,136
-                "
-                fill="none"
-                stroke="var(--blue-400)"
-                strokeWidth="1.4"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-              <circle cx="76" cy="24" r="1.6" fill="var(--blue-500)" />
-              <circle cx="22" cy="58" r="1.6" fill="var(--blue-500)" />
-              <circle cx="78" cy="58" r="1.6" fill="var(--blue-500)" />
-              <circle cx="22" cy="120" r="1.6" fill="var(--blue-500)" />
-            </svg>
-
-            <div className="about__diagram-item about__diagram-item--1">
-              <span className="about__diagram-index">01</span>
-              <h4>{about.philosophy.points[0].heading}</h4>
-              <p>{about.philosophy.points[0].text}</p>
-            </div>
-
-            <div className="about__diagram-item about__diagram-item--2">
-              <span className="about__diagram-index">02</span>
-              <h4>{about.philosophy.points[1].heading}</h4>
-              <p>{about.philosophy.points[1].text}</p>
-            </div>
-
-            <div className="about__diagram-item about__diagram-item--3">
-              <span className="about__diagram-index">03</span>
-              <h4>{about.philosophy.points[2].heading}</h4>
-              <p>{about.philosophy.points[2].text}</p>
-            </div>
-
-            <div className="about__diagram-item about__diagram-item--4">
-              <span className="about__diagram-index">04</span>
-              <h4>{about.philosophy.points[3].heading}</h4>
-              <p>{about.philosophy.points[3].text}</p>
-            </div>
-
-            <div className="about__diagram-center">
-              <div className="about__diagram-center-photo">
-                <img src={laptopImg} alt={`${profile.name} working`} />
+          <div className="about__pinwheel">
+            {about.philosophy.points.map((pt, i) => (
+              <div
+                className="about__pinwheel-card"
+                key={pt.heading}
+                style={{
+                  '--rot': PINWHEEL_LAYOUT[i].rot,
+                  '--tx': PINWHEEL_LAYOUT[i].tx,
+                  '--ty': PINWHEEL_LAYOUT[i].ty,
+                  '--z': PINWHEEL_LAYOUT[i].z,
+                  '--bg': PINWHEEL_LAYOUT[i].bg,
+                  '--fg': PINWHEEL_LAYOUT[i].fg,
+                }}
+                tabIndex={0}
+              >
+                <span className="about__pinwheel-step">Step {String(i + 1).padStart(2, '0')}</span>
+                <h4 className="about__pinwheel-title">{pt.heading}</h4>
+                <p className="about__pinwheel-desc">{pt.text}</p>
               </div>
-              <span className="about__diagram-center-label">That's me, still building</span>
+            ))}
+
+            <div className="about__pinwheel-circle">
+              <img src={laptopImg} alt={`${profile.name} portrait`} />
             </div>
           </div>
         </div>
