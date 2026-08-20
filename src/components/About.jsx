@@ -1,5 +1,6 @@
 import {
   FiZap, FiCpu, FiSmartphone, FiTarget, FiPenTool,
+  FiSearch, FiTool, FiCheckCircle,
 } from 'react-icons/fi'
 import { TbRobot } from 'react-icons/tb'
 import { about, profile } from '../data'
@@ -17,14 +18,11 @@ const interestIcons = {
   'UI/UX': <FiPenTool />,
 }
 
-// 4 equal 45deg wedges swept down the right semicircle (0deg = 12 o'clock,
-// sweeping clockwise to 180deg = 6 o'clock). badgeX/badgeY are the wedge's
-// midpoint on the ring, as % position within the circle.
-const WHEEL_SEGMENTS = [
-  { badgeX: 64.5, badgeY: 14.9, bg: 'var(--navy-800)', fg: 'var(--white)' },
-  { badgeX: 85.1, badgeY: 35.5, bg: 'var(--blue-600)', fg: 'var(--white)' },
-  { badgeX: 85.1, badgeY: 64.5, bg: 'var(--blue-400)', fg: 'var(--white)' },
-  { badgeX: 64.5, badgeY: 85.1, bg: 'var(--sky-300)', fg: 'var(--navy-800)' },
+const TICKET_CARDS = [
+  { icon: <FiSearch />, accent: 'var(--navy-800)' },
+  { icon: <FiZap />, accent: 'var(--blue-600)' },
+  { icon: <FiTool />, accent: 'var(--blue-400)' },
+  { icon: <FiCheckCircle />, accent: 'var(--sky-300)' },
 ]
 
 export default function About() {
@@ -74,45 +72,22 @@ export default function About() {
           </div>
         </div>
 
-        {/* ---------- Session 2: segmented wheel — photo, ring, radiating labels ---------- */}
+        {/* ---------- Session 2: ticket cards — icon+flag, title, desc, number band ---------- */}
         <div className="about__diagram reveal reveal-delay-1">
           <span className="eyebrow about__diagram-eyebrow">How I Think</span>
           <h3 className="about__diagram-title">{about.philosophy.title}</h3>
 
-          <div className="about__wheel">
-            <div className="about__wheel-photo">
-              <img src={smilingImg} alt={profile.name} />
-            </div>
-
-            <div className="about__wheel-circle">
-              <div className="about__wheel-ring" aria-hidden="true" />
-              <div className="about__wheel-hub">
-                <span>How I</span>
-                <span>Think</span>
+          <div className="about__tickets">
+            {about.philosophy.points.map((pt, i) => (
+              <div className="about__ticket" key={pt.heading} style={{ '--accent': TICKET_CARDS[i].accent }}>
+                <span className="about__ticket-flag" aria-hidden="true" />
+                <span className="about__ticket-icon">{TICKET_CARDS[i].icon}</span>
+                <h4 className="about__ticket-title">{pt.heading}</h4>
+                <p className="about__ticket-text">{pt.short}</p>
+                <span className="about__ticket-band" aria-hidden="true" />
+                <span className="about__ticket-number">{String(i + 1).padStart(2, '0')}</span>
               </div>
-              {WHEEL_SEGMENTS.map((seg, i) => (
-                <span
-                  className="about__wheel-badge"
-                  key={i}
-                  style={{ left: `${seg.badgeX}%`, top: `${seg.badgeY}%`, background: seg.bg, color: seg.fg }}
-                >
-                  {String(i + 1).padStart(2, '0')}
-                </span>
-              ))}
-            </div>
-
-            <div className="about__wheel-arrows">
-              {about.philosophy.points.map((pt, i) => (
-                <div
-                  className="about__wheel-arrow"
-                  key={pt.heading}
-                  style={{ top: `${WHEEL_SEGMENTS[i].badgeY}%`, background: WHEEL_SEGMENTS[i].bg, color: WHEEL_SEGMENTS[i].fg }}
-                >
-                  <h4>{pt.heading}</h4>
-                  <p>{pt.short}</p>
-                </div>
-              ))}
-            </div>
+            ))}
           </div>
         </div>
 
