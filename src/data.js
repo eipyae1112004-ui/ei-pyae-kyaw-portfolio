@@ -17,6 +17,7 @@ export const profile = {
   github: 'https://github.com/eipyae1112004-ui',
   tagline:
     "I build software that quietly makes people's lives easier — automating the tedious, connecting the disconnected, and turning real-world problems into working products.",
+  arcText: 'We believe every line of code should make someone’s day a little easier',
   objective:
     "My objective is simple: keep learning by building, and turn real inconveniences — slow audits, lonely seniors, confusing systems — into working, human-centered products. I move fluidly between RPA, full-stack web, and embedded systems, always chasing the moment technology quietly makes someone's day easier.",
 }

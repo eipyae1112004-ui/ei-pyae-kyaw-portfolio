@@ -1,6 +1,7 @@
+import { useState } from 'react'
 import {
   FiZap, FiCpu, FiSmartphone, FiTarget, FiPenTool,
-  FiSearch, FiTool, FiCheckCircle,
+  FiSearch, FiTool, FiCheckCircle, FiPlus, FiMinus,
 } from 'react-icons/fi'
 import { TbRobot } from 'react-icons/tb'
 import { about, profile } from '../data'
@@ -18,15 +19,11 @@ const interestIcons = {
   'UI/UX': <FiPenTool />,
 }
 
-const TICKET_CARDS = [
-  { icon: <FiSearch />, accent: 'var(--navy-800)' },
-  { icon: <FiZap />, accent: 'var(--blue-600)' },
-  { icon: <FiTool />, accent: 'var(--blue-400)' },
-  { icon: <FiCheckCircle />, accent: 'var(--sky-300)' },
-]
+const PHILOSOPHY_ICONS = [<FiSearch />, <FiZap />, <FiTool />, <FiCheckCircle />]
 
 export default function About() {
   const ref = useReveal()
+  const [openIndex, setOpenIndex] = useState(0)
 
   return (
     <section id="about" className="section about" ref={ref}>
@@ -72,22 +69,32 @@ export default function About() {
           </div>
         </div>
 
-        {/* ---------- Session 2: ticket cards — icon+flag, title, desc, number band ---------- */}
+        {/* ---------- Session 2: philosophy accordion ---------- */}
         <div className="about__diagram reveal reveal-delay-1">
           <span className="eyebrow about__diagram-eyebrow">How I Think</span>
           <h3 className="about__diagram-title">{about.philosophy.title}</h3>
 
-          <div className="about__tickets">
-            {about.philosophy.points.map((pt, i) => (
-              <div className="about__ticket" key={pt.heading} style={{ '--accent': TICKET_CARDS[i].accent }}>
-                <span className="about__ticket-flag" aria-hidden="true" />
-                <span className="about__ticket-icon">{TICKET_CARDS[i].icon}</span>
-                <h4 className="about__ticket-title">{pt.heading}</h4>
-                <p className="about__ticket-text">{pt.text}</p>
-                <span className="about__ticket-band" aria-hidden="true" />
-                <span className="about__ticket-number">{String(i + 1).padStart(2, '0')}</span>
-              </div>
-            ))}
+          <div className="about__accordion">
+            {about.philosophy.points.map((pt, i) => {
+              const isOpen = openIndex === i
+              return (
+                <div className={`about__accordion-item${isOpen ? ' about__accordion-item--open' : ''}`} key={pt.heading}>
+                  <button
+                    type="button"
+                    className="about__accordion-head"
+                    onClick={() => setOpenIndex(isOpen ? -1 : i)}
+                    aria-expanded={isOpen}
+                  >
+                    <span className="about__accordion-badge">{PHILOSOPHY_ICONS[i]}</span>
+                    <span className="about__accordion-title">{pt.heading}</span>
+                    <span className="about__accordion-toggle">{isOpen ? <FiMinus /> : <FiPlus />}</span>
+                  </button>
+                  <div className="about__accordion-body">
+                    <p>{pt.text}</p>
+                  </div>
+                </div>
+              )
+            })}
           </div>
         </div>
 
