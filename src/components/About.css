@@ -1,201 +1,307 @@
 .about {
-  background: linear-gradient(180deg, var(--ice-50) 0%, var(--sky-100) 100%);
+  background: linear-gradient(180deg, var(--ice-50) 0%, var(--sky-100) 55%, var(--ice-50) 100%);
 }
 
-.about__grid {
+/* ---------- Top row: badge + bio | meta | thread ---------- */
+
+.about__top {
   display: grid;
-  grid-template-columns: 0.85fr 1.15fr;
-  gap: clamp(2.5rem, 6vw, 5rem);
+  grid-template-columns: 0.72fr 0.85fr 1.1fr;
+  gap: clamp(2rem, 5vw, 3rem);
   align-items: start;
 }
 
-.about__gallery {
+.about__badge-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.3rem;
+}
+
+.about__bubble {
   position: relative;
-  min-height: 460px;
-}
-
-.about__photo {
-  position: absolute;
-  overflow: hidden;
-  box-shadow: var(--shadow-soft);
   background: var(--white);
+  border: 1px solid rgba(37, 99, 235, 0.12);
+  border-radius: var(--radius-md);
+  padding: 1.1rem 1.3rem;
+  box-shadow: var(--shadow-card);
+  max-width: 280px;
 }
 
-.about__photo img {
+.about__bubble-tail {
+  position: absolute;
+  top: -8px;
+  left: 40px;
+  width: 16px;
+  height: 16px;
+  background: var(--white);
+  border-left: 1px solid rgba(37, 99, 235, 0.12);
+  border-top: 1px solid rgba(37, 99, 235, 0.12);
+  transform: rotate(45deg);
+}
+
+.about__bubble p {
+  font-size: 0.92rem;
+  line-height: 1.7;
+  color: var(--ink-700);
+}
+
+.about__meta-col {
+  padding-top: 0.5rem;
+}
+
+.about__pill-box {
+  margin-top: 1.4rem;
+  background: var(--white);
+  border-radius: var(--radius-md);
+  padding: 1rem 1.2rem;
+  box-shadow: var(--shadow-card);
+  border: 1px solid rgba(37, 99, 235, 0.1);
+}
+
+.about__pill-label {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--white);
+  background: linear-gradient(120deg, var(--blue-600), var(--blue-500));
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+  margin-bottom: 0.7rem;
+}
+
+.about__education {
+  display: flex;
+  gap: 0.9rem;
+  align-items: baseline;
+}
+
+.about__education strong {
+  color: var(--blue-600);
+  font-size: 0.85rem;
+  white-space: nowrap;
+}
+
+.about__education-degree {
+  display: block;
+  font-weight: 600;
+  color: var(--navy-800);
+  font-size: 0.95rem;
+}
+
+.about__education-school {
+  display: block;
+  color: var(--ink-500);
+  font-size: 0.85rem;
+}
+
+.about__tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.about__tag {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--blue-600);
+  background: var(--sky-100);
+  border: 1px solid rgba(37, 99, 235, 0.18);
+  padding: 0.32rem 0.7rem;
+  border-radius: 999px;
+}
+
+.about__thread-col {
+  position: relative;
+  padding-left: 1.6rem;
+  padding-top: 0.5rem;
+  padding-bottom: 1rem;
+}
+
+.about__thread-line {
+  position: absolute;
+  left: 0;
+  top: 0.3rem;
+  bottom: 0.5rem;
+  width: 2px;
+  background: linear-gradient(var(--blue-400), var(--sky-300) 45%, var(--sky-300) 80%, transparent);
+  border-radius: 2px;
+}
+
+.about__thread-line::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: -4px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--blue-500);
+  transform: translateX(-50%);
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.18);
+}
+
+.about__thread-title {
+  font-family: 'Caveat', cursive;
+  font-size: 1.9rem;
+  font-weight: 600;
+  color: var(--navy-800);
+  line-height: 1.15;
+}
+
+.about__thread-title--sub {
+  color: var(--blue-600);
+  margin-bottom: 0.6rem;
+}
+
+.about__thread-text {
+  font-size: 0.88rem;
+  line-height: 1.75;
+  color: var(--ink-500);
+}
+
+/* ---------- Diagram: philosophy points around center photo ---------- */
+/* Nested inside .about__thread-col, filling the space below the lifestyle text */
+
+.about__diagram {
+  text-align: center;
+  margin-top: 2.2rem;
+}
+
+.about__diagram-eyebrow {
+  justify-content: center;
+}
+
+.about__diagram-title {
+  font-size: 1.05rem;
+  line-height: 1.4;
+  margin-bottom: 1.8rem;
+}
+
+.about__diagram-stage {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr minmax(70px, 92px) 1fr;
+  grid-template-rows: auto auto;
+  grid-template-areas:
+    'i1 center i2'
+    'i3 center i4';
+  align-items: center;
+  gap: 1.1rem 0.7rem;
+  max-width: 340px;
+  margin: 0 auto;
+}
+
+.about__diagram-lines {
+  grid-area: 1 / 1 / 3 / 4;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.about__diagram-center {
+  grid-area: center;
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 4px solid var(--white);
+  box-shadow: var(--shadow-soft), 0 0 0 3px var(--sky-300);
+  animation: floatY 7s ease-in-out infinite;
+}
+
+.about__diagram-center img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.about__photo--oval {
-  width: 62%;
-  aspect-ratio: 3 / 4;
-  top: 0;
-  left: 4%;
-  border-radius: 50% 50% 46% 46% / 58% 58% 42% 42%;
-  border: 6px solid var(--white);
-  z-index: 2;
-  animation: floatY 7s ease-in-out infinite;
-}
-
-.about__photo--square {
-  width: 46%;
-  aspect-ratio: 4 / 5;
-  bottom: -1.5rem;
-  right: 0;
-  border-radius: var(--radius-lg) var(--radius-lg) var(--radius-lg) 4px;
-  border: 6px solid var(--white);
-  z-index: 3;
-  animation: floatY 8s ease-in-out infinite;
-  animation-delay: -3s;
-}
-
-.about__blob {
-  position: absolute;
-  width: 260px;
-  height: 260px;
-  border-radius: 42% 58% 65% 35% / 45% 40% 60% 55%;
-  background: linear-gradient(135deg, var(--blue-400), var(--sky-300));
-  opacity: 0.35;
-  top: -6%;
-  right: -8%;
-  z-index: 1;
-  animation: floatSlow 10s ease-in-out infinite;
-}
-
-.about__dots {
-  position: absolute;
-  bottom: 14%;
-  left: -6%;
-  width: 120px;
-  height: 120px;
-  z-index: 1;
-  background-image: radial-gradient(var(--blue-400) 2.5px, transparent 2.5px);
-  background-size: 16px 16px;
-  opacity: 0.5;
-}
-
-.about__stat-card {
-  position: absolute;
-  bottom: -6%;
-  left: 2%;
-  z-index: 4;
-  background: var(--navy-800);
-  color: var(--white);
-  padding: 1rem 1.3rem;
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-card);
-  display: flex;
-  flex-direction: column;
-  gap: 0.15rem;
-  max-width: 165px;
-  animation: floatY 6.5s ease-in-out infinite;
-  animation-delay: -1.5s;
-}
-
-.about__stat-card strong {
-  font-family: var(--font-heading);
-  font-size: 1.6rem;
-  color: var(--sky-300);
-}
-
-.about__stat-card span {
-  font-size: 0.78rem;
-  color: rgba(255,255,255,0.75);
-  line-height: 1.4;
-}
-
-.about__paragraph {
-  color: var(--ink-700);
-  font-size: 1.02rem;
-  line-height: 1.85;
-  margin-bottom: 1.2rem;
-}
-
-.about__philosophy,
-.about__lifestyle {
-  margin-top: 2.4rem;
-}
-
-.about__philosophy h3,
-.about__lifestyle h3 {
-  font-size: 1.3rem;
-  margin-bottom: 1.2rem;
+.about__diagram-item {
   position: relative;
-  padding-left: 1rem;
-}
-
-.about__philosophy h3::before,
-.about__lifestyle h3::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 3px;
-  bottom: 3px;
-  width: 4px;
-  border-radius: 4px;
-  background: linear-gradient(var(--blue-500), var(--sky-300));
-}
-
-.about__philosophy-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1.1rem;
-}
-
-.about__philosophy-card {
+  z-index: 1;
+  text-align: left;
   background: var(--white);
   border: 1px solid rgba(37, 99, 235, 0.1);
-  border-radius: var(--radius-md);
-  padding: 1.4rem 1.3rem;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-  position: relative;
-}
-
-.about__philosophy-card:hover {
-  transform: translateY(-6px);
+  border-radius: var(--radius-sm);
+  padding: 0.7rem 0.75rem;
   box-shadow: var(--shadow-card);
-  border-color: var(--blue-400);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.about__philosophy-index {
+.about__diagram-item:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-soft);
+}
+
+.about__diagram-item--1 { grid-area: i1; }
+.about__diagram-item--2 { grid-area: i2; }
+.about__diagram-item--3 { grid-area: i3; }
+.about__diagram-item--4 { grid-area: i4; }
+
+.about__diagram-index {
+  display: inline-block;
   font-family: var(--font-heading);
   font-weight: 700;
-  font-size: 1.6rem;
-  color: var(--sky-300);
-  opacity: 0.7;
+  font-size: 0.68rem;
+  color: var(--white);
+  background: linear-gradient(120deg, var(--blue-600), var(--blue-400));
+  width: 19px;
+  height: 19px;
+  line-height: 19px;
+  text-align: center;
+  border-radius: 50%;
+  margin-bottom: 0.4rem;
 }
 
-.about__philosophy-card h4 {
-  font-size: 1rem;
-  margin: 0.5rem 0 0.4rem;
+.about__diagram-item h4 {
+  font-size: 0.78rem;
+  margin-bottom: 0.25rem;
   color: var(--navy-800);
+  line-height: 1.3;
 }
 
-.about__philosophy-card p {
-  font-size: 0.9rem;
+.about__diagram-item p {
+  font-size: 0.72rem;
+  line-height: 1.5;
   color: var(--ink-500);
-  line-height: 1.65;
 }
 
-.about__lifestyle p {
-  color: var(--ink-700);
-  line-height: 1.8;
-  font-size: 1rem;
-}
-
-@media (max-width: 900px) {
-  .about__grid {
+@media (max-width: 980px) {
+  .about__top {
     grid-template-columns: 1fr;
   }
 
-  .about__gallery {
-    min-height: 380px;
-    max-width: 420px;
-    margin: 0 auto 1rem;
+  .about__thread-col {
+    padding-left: 1.6rem;
   }
 
-  .about__philosophy-grid {
+  .about__diagram-stage {
+    max-width: 300px;
+  }
+}
+
+@media (max-width: 560px) {
+  .about__diagram-stage {
     grid-template-columns: 1fr;
+    grid-template-areas:
+      'center'
+      'i1'
+      'i2'
+      'i3'
+      'i4';
+    max-width: 320px;
+  }
+
+  .about__diagram-center {
+    width: 130px;
+    margin: 0 auto 0.5rem;
+  }
+
+  .about__diagram-lines {
+    display: none;
   }
 }

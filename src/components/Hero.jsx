@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { HiArrowDown } from 'react-icons/hi'
-import { FiGithub, FiLinkedin } from 'react-icons/fi'
+import { FiGithub, FiLinkedin, FiPhone, FiMail, FiMapPin } from 'react-icons/fi'
 import { profile } from '../data'
 import profileImg from '../assets/kath-smiling.jpg'
 import './Hero.css'
@@ -44,45 +44,62 @@ export default function Hero() {
         <span className="hero__blob hero__blob--2" />
         <span className="hero__blob hero__blob--3" />
         <div className="hero__grid" />
-        <span className="hero__orbit hero__orbit--1" />
-        <span className="hero__orbit hero__orbit--2" />
       </div>
 
       <div className="hero__inner">
-        <div className="hero__text">
-          <p className="hero__greeting">Hi, my name is</p>
-          <h1 className="hero__name">
-            {profile.name} <span className="gradient-text">({profile.nickname})</span>
-          </h1>
-          <h2 className="hero__role">
-            I'm a <span className="hero__typed">{typed}</span>
-            <span className="hero__cursor" aria-hidden="true">|</span>
-          </h2>
-          <p className="hero__tagline">{profile.tagline}</p>
-
-          <div className="hero__actions">
-            <a href="#projects" className="btn btn-primary">View My Work</a>
-            <a href="#contact" className="btn btn-ghost">Let's Connect</a>
+        <div className="hero__row">
+          <div className="hero__intro">
+            <p className="hero__greeting">Hi, I'm</p>
+            <h1 className="hero__name">
+              {profile.name} <span className="gradient-text">({profile.nickname})</span>
+            </h1>
+            <h2 className="hero__role">
+              I'm a <span className="hero__typed">{typed}</span>
+              <span className="hero__cursor" aria-hidden="true">|</span>
+            </h2>
           </div>
 
-          <div className="hero__socials">
-            <a href={profile.github} target="_blank" rel="noreferrer" aria-label="GitHub">
-              <FiGithub size={20} />
+          <div className="hero__quicklinks">
+            <a href={`tel:${profile.phone.replace(/\s+/g, '')}`} className="hero__quicklink">
+              <FiPhone size={16} /> {profile.phone}
             </a>
-            <a href={profile.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn">
-              <FiLinkedin size={20} />
+            <a href={`mailto:${profile.email}`} className="hero__quicklink">
+              <FiMail size={16} /> {profile.email}
             </a>
+            <span className="hero__quicklink hero__quicklink--static">
+              <FiMapPin size={16} /> {profile.location}
+            </span>
           </div>
         </div>
 
         <div className="hero__portrait">
-          <div className="hero__portrait-ring" />
+          <span className="hero__orbit-ring hero__orbit-ring--1" aria-hidden="true" />
+          <span className="hero__orbit-ring hero__orbit-ring--2" aria-hidden="true" />
+          <span className="hero__star hero__star--1" aria-hidden="true">✦</span>
+          <span className="hero__star hero__star--2" aria-hidden="true">✦</span>
+          <span className="hero__star hero__star--3" aria-hidden="true">✧</span>
           <div className="hero__portrait-frame">
             <img src={profileImg} alt={`${profile.name} portrait`} />
           </div>
-          <span className="hero__badge hero__badge--1">⚙️ Automation</span>
-          <span className="hero__badge hero__badge--2">💻 Full-Stack</span>
-          <span className="hero__badge hero__badge--3">🤖 RPA</span>
+        </div>
+
+        <div className="hero__objective">
+          <span className="eyebrow">Objective</span>
+          <p>{profile.objective}</p>
+        </div>
+
+        <div className="hero__actions">
+          <a href="#projects" className="btn btn-primary">View My Work</a>
+          <a href="#contact" className="btn btn-ghost">Let's Connect</a>
+        </div>
+
+        <div className="hero__socials">
+          <a href={profile.github} target="_blank" rel="noreferrer" aria-label="GitHub">
+            <FiGithub size={20} />
+          </a>
+          <a href={profile.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn">
+            <FiLinkedin size={20} />
+          </a>
         </div>
       </div>
 

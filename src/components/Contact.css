@@ -24,6 +24,18 @@
   pointer-events: none;
 }
 
+.contact::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -1px;
+  height: clamp(90px, 16vw, 180px);
+  background: linear-gradient(to bottom, var(--ice-50), transparent);
+  pointer-events: none;
+  z-index: 1;
+}
+
 .contact__blob {
   position: absolute;
   border-radius: 50%;

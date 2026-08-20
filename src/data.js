@@ -17,13 +17,19 @@ export const profile = {
   github: 'https://github.com/eipyae1112004-ui',
   tagline:
     "I build software that quietly makes people's lives easier — automating the tedious, connecting the disconnected, and turning real-world problems into working products.",
+  objective:
+    "My objective is simple: keep learning by building, and turn real inconveniences — slow audits, lonely seniors, confusing systems — into working, human-centered products. I move fluidly between RPA, full-stack web, and embedded systems, always chasing the moment technology quietly makes someone's day easier.",
 }
 
 export const about = {
-  intro: [
-    "I'm a Computer Engineering graduate from Singapore Polytechnic and a developer who genuinely enjoys the moment a messy, manual process turns into something clean and automatic. My path has wound through RPA automation, full-stack web development, embedded systems, and even a little machine learning — and every stop taught me the same lesson: good technology should disappear into the background of someone's day and just make things easier.",
-    "During my internship at KLP LLP, I helped extend a manual, paper-heavy audit process into a full web-based automation platform — cutting hours of repetitive work down to minutes. That experience shaped how I think about engineering: not just 'can I build this', but 'who does this actually help, and how much time and stress does it save them?'",
-  ],
+  bio: "Hello! I'm Ei Pyae Kyaw, also known as Kathryn Ei — a developer who genuinely enjoys the moment a messy, manual process turns into something clean and automatic. From automating audits at KLP LLP to building facial recognition, robotics, and ML projects on the side, I move fluidly between RPA, full-stack web, and embedded systems, always chasing tech that quietly makes someone's day easier.",
+  education: {
+    degree: 'Diploma in Computer Engineering',
+    school: 'Singapore Polytechnic',
+    period: '2023 — 2026',
+    note: 'Specialized in Computer Application',
+  },
+  interests: ['Automation', 'New Tech', 'Gadgets', 'Problem Solving', 'Robotics', 'UI/UX'],
   philosophy: {
     title: 'How I think about building things',
     points: [
