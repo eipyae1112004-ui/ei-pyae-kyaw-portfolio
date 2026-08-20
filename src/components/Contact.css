@@ -1,0 +1,120 @@
+.contact {
+  position: relative;
+  background: radial-gradient(circle at 50% 0%, #0f2a57 0%, var(--navy-800) 55%, var(--navy-900) 100%);
+  text-align: center;
+  overflow: hidden;
+}
+
+.contact .eyebrow {
+  color: var(--sky-300);
+  justify-content: center;
+}
+
+.contact .section-title {
+  color: var(--white);
+}
+
+.contact .section-subtitle {
+  color: rgba(255,255,255,0.65);
+}
+
+.contact__bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.contact__blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(70px);
+  opacity: 0.4;
+  animation: floatSlow 13s ease-in-out infinite;
+}
+
+.contact__blob--1 {
+  width: 380px;
+  height: 380px;
+  top: -10%;
+  left: -8%;
+  background: radial-gradient(circle, var(--blue-500), transparent 70%);
+}
+
+.contact__blob--2 {
+  width: 320px;
+  height: 320px;
+  bottom: -12%;
+  right: -6%;
+  background: radial-gradient(circle, var(--sky-300), transparent 70%);
+  animation-delay: -5s;
+}
+
+.contact__inner {
+  position: relative;
+  z-index: 2;
+}
+
+.contact__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.4rem;
+  max-width: 780px;
+  margin: 0 auto;
+}
+
+.contact-card {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: var(--radius-lg);
+  padding: 2rem 1.4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  color: var(--white);
+  transition: transform 0.3s ease, background 0.3s ease, border-color 0.3s ease;
+}
+
+.contact-card:hover {
+  transform: translateY(-8px);
+  background: rgba(255, 255, 255, 0.12);
+  border-color: var(--sky-300);
+}
+
+.contact-card__icon {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--blue-500), var(--navy-700));
+  color: var(--white);
+  margin-bottom: 0.4rem;
+}
+
+.contact-card__label {
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.contact-card__value {
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.6);
+  word-break: break-word;
+}
+
+.contact__location {
+  margin-top: 2.6rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: rgba(255,255,255,0.55);
+  font-size: 0.9rem;
+}
+
+@media (max-width: 700px) {
+  .contact__grid {
+    grid-template-columns: 1fr;
+  }
+}
