@@ -35,18 +35,22 @@ export const about = {
     points: [
       {
         heading: 'Solve real problems first',
+        short: 'I start from a real inconvenience and work backwards to the tech.',
         text: "Code is a means, not the point. I start from a real inconvenience — a slow audit process, a lonely senior, a confusing parking system — and work backwards to the tech.",
       },
       {
         heading: 'Automate the boring, protect the human',
+        short: 'Automation frees up time for what needs a human touch.',
         text: "I love RPA and automation because it removes drudgery, not people. The goal is always to free up time for the things that actually need a human touch.",
       },
       {
         heading: 'Learn by building, not just reading',
+        short: 'I ship things to understand them deeply, not just read about them.',
         text: 'Every project in my portfolio — from facial recognition to assistive robots — exists because I wanted to understand something deeply enough to ship it.',
       },
       {
         heading: 'Detail is a form of respect',
+        short: 'Careless details compound into unreliable systems.',
         text: "Whether it's a database schema or a UI spacing choice, I sweat the small stuff. Careless details compound into unreliable systems.",
       },
     ],
