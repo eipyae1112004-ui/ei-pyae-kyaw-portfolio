@@ -3,7 +3,6 @@ import { HiArrowDown } from 'react-icons/hi'
 import { FiGithub, FiLinkedin, FiPhone, FiMail, FiMapPin } from 'react-icons/fi'
 import { profile } from '../data'
 import profileImg from '../assets/kath-smiling.jpg'
-import laptopImg from '../assets/kath-laptop.jpg'
 import './Hero.css'
 
 function useTypewriter(words, { typeSpeed = 90, deleteSpeed = 45, pause = 1400 } = {}) {
@@ -48,7 +47,7 @@ export default function Hero() {
       </div>
 
       <div className="hero__inner">
-        <div className="hero__row">
+        <div className="hero__layout">
           <div className="hero__intro">
             <p className="hero__greeting">Hi, I'm</p>
             <h1 className="hero__name">
@@ -58,6 +57,27 @@ export default function Hero() {
               I'm a <span className="hero__typed">{typed}</span>
               <span className="hero__cursor" aria-hidden="true">|</span>
             </h2>
+          </div>
+
+          <div className="hero__portrait">
+            <svg className="hero__arc-text" viewBox="0 0 300 90" aria-hidden="true">
+              <path id="heroArcPath" d="M 20,85 A 130,130 0 0 1 280,85" fill="none" />
+              <text>
+                <textPath href="#heroArcPath" startOffset="50%" textAnchor="middle">
+                  {profile.arcText}
+                </textPath>
+              </text>
+            </svg>
+
+            <span className="hero__orbit-ring hero__orbit-ring--1" aria-hidden="true" />
+            <span className="hero__orbit-ring hero__orbit-ring--2" aria-hidden="true" />
+            <span className="hero__star hero__star--1" aria-hidden="true">✦</span>
+            <span className="hero__star hero__star--2" aria-hidden="true">✦</span>
+            <span className="hero__star hero__star--3" aria-hidden="true">✧</span>
+
+            <div className="hero__portrait-frame">
+              <img src={profileImg} alt={`${profile.name} portrait`} />
+            </div>
           </div>
 
           <div className="hero__quicklinks">
@@ -70,33 +90,6 @@ export default function Hero() {
             <span className="hero__quicklink hero__quicklink--static">
               <FiMapPin size={16} /> {profile.location}
             </span>
-          </div>
-        </div>
-
-        <div className="hero__portrait">
-          <svg className="hero__arc-text" viewBox="0 0 300 170" aria-hidden="true">
-            <path id="heroArcPath" d="M 20,150 A 130,130 0 0 1 280,150" fill="none" />
-            <text>
-              <textPath href="#heroArcPath" startOffset="50%" textAnchor="middle">
-                {profile.arcText}
-              </textPath>
-            </text>
-          </svg>
-
-          <span className="hero__orbit-ring hero__orbit-ring--1" aria-hidden="true" />
-          <span className="hero__orbit-ring hero__orbit-ring--2" aria-hidden="true" />
-          <span className="hero__star hero__star--1" aria-hidden="true">✦</span>
-          <span className="hero__star hero__star--2" aria-hidden="true">✦</span>
-          <span className="hero__star hero__star--3" aria-hidden="true">✧</span>
-
-          <span className="hero__orbit-chip hero__orbit-chip--1" aria-hidden="true">⚙️</span>
-          <span className="hero__orbit-photo hero__orbit-photo--1">
-            <img src={laptopImg} alt="" />
-          </span>
-          <span className="hero__orbit-chip hero__orbit-chip--2" aria-hidden="true">💻</span>
-
-          <div className="hero__portrait-frame">
-            <img src={profileImg} alt={`${profile.name} portrait`} />
           </div>
         </div>
 
