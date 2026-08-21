@@ -22,6 +22,21 @@
   box-shadow: var(--shadow-soft);
   padding: clamp(1.6rem, 4vw, 2.6rem);
   text-align: left;
+  scrollbar-width: thin;
+  scrollbar-color: var(--blue-400) transparent;
+}
+
+.project-modal::-webkit-scrollbar {
+  width: 5px;
+}
+
+.project-modal::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.project-modal::-webkit-scrollbar-thumb {
+  background: var(--blue-400);
+  border-radius: 999px;
 }
 
 .project-modal__close {
