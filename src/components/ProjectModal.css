@@ -137,6 +137,7 @@
 }
 
 .project-modal__media-item {
+  position: relative;
   flex: 0 0 auto;
   scroll-snap-align: start;
   width: min(420px, 78vw);
@@ -153,6 +154,19 @@
   height: 100%;
   object-fit: cover;
   display: block;
+}
+
+.project-modal__media-label {
+  position: absolute;
+  left: 0.6rem;
+  bottom: 0.6rem;
+  background: rgba(18, 40, 75, 0.75);
+  color: var(--white);
+  font-size: 0.76rem;
+  font-weight: 600;
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+  pointer-events: none;
 }
 
 .project-modal__media-placeholder {

@@ -155,6 +155,7 @@ export const projects = [
       'Engineered a full-stack audit automation platform using React.js, Python, SQL and Docker to extend RPA workflows with a web-based UI and AI integration. Automated repetitive manual audit workflows with UiPath and Excel VBA, cutting processing time by roughly 40% and eliminating recurring manual data entry. Architected RESTful backend APIs in Python to automate audit data flows for auditors and management teams, and optimised relational SQL database models for complex multi-entity audit data to ensure high data integrity and long-term query performance.',
     github: 'https://github.com/eipyae1112004-ui/audit-automation-system',
     year: '2025',
+    media: [],
   },
   {
     id: 'facial-recognition',
@@ -191,6 +192,10 @@ export const projects = [
       'Engineered a custom CNN image-classification pipeline using Keras/TensorFlow to classify multi-class food items and unknown baselines with 92.8% test accuracy. Architected a ~1.24M parameter deep learning model using the Keras Functional API — incorporating batch normalisation, double convolution layers, and global average pooling to balance model capacity and generalisation — then evaluated it against pre-trained architectures (ResNet50, MobileNetV2, InceptionV3) and deployed an interactive web app with live camera feed inference.',
     github: 'https://github.com/eipyae1112004-ui/food-image-classification',
     year: '2024',
+    media: [
+      { type: 'video', src: '/media/food-classification/live-camera-demo.mp4', label: 'Live Camera Demo' },
+      { type: 'video', src: '/media/food-classification/upload-image-demo.mp4', label: 'Upload Image Demo' },
+    ],
   },
   {
     id: 'sp-bot',
@@ -203,6 +208,9 @@ export const projects = [
       'Designed and built an Arduino-based assistive robot to support seniors by reducing loneliness and improving medication adherence. Developed C++ embedded control logic for the robot and integrated ultrasonic sensors, IR sensors, and an LCD interface for real-time interaction and space awareness — first prize winner at the SP Robotics Innovation & Technology Enterprise Championship.',
     github: 'https://github.com/eipyae1112004-ui/sp-bot-assistive-robot',
     year: '2023',
+    media: [
+      { type: 'video', src: '/media/sp-bot/demo.mp4', label: 'SP-Bot Demo' },
+    ],
   },
   {
     id: 'unicycle',
@@ -215,6 +223,9 @@ export const projects = [
       'Built the web platform (HTML, CSS, JavaScript) including the landing page, home page, payment flow, and shopping features, plus backend infrastructure using Firebase, Python, and SQL to support both the app and web platforms. Designed Figma UI mockups for the mobile app and guided teammates on interface improvements; the companion Android app was built with Java, RESTful APIs, Gradle, and responsive XML layouts, featuring QR code scanning and payment integration.',
     github: 'https://github.com/eipyae1112004-ui/unicycle',
     year: '2023',
+    media: [
+      { type: 'video', src: '/media/unicycle/demo.mp4', label: 'UniCycle Demo' },
+    ],
   },
 ]
 

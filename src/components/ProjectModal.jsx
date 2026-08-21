@@ -57,10 +57,11 @@ export default function ProjectModal({ project, onClose }) {
               {project.media.map((m, i) => (
                 <div className="project-modal__media-item" key={i}>
                   {m.type === 'video' ? (
-                    <video src={m.src} poster={m.poster} controls />
+                    <video src={m.src} poster={m.poster} controls preload="none" />
                   ) : (
                     <img src={m.src} alt={m.alt || `${project.title} slide ${i + 1}`} />
                   )}
+                  {m.label && <span className="project-modal__media-label">{m.label}</span>}
                 </div>
               ))}
             </div>
