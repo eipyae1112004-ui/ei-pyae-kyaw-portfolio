@@ -101,7 +101,7 @@ export default function Hero() {
 
         <div className="hero__actions">
           <a href="#projects" className="btn btn-primary">View My Work</a>
-          <a href="/Ei-Pyae-Kyaw-Resume.pdf" target="_blank" rel="noreferrer" className="btn btn-ghost">
+          <a href={`${import.meta.env.BASE_URL}Ei-Pyae-Kyaw-Resume.pdf`} target="_blank" rel="noreferrer" className="btn btn-ghost">
             <FiFileText /> Resume
           </a>
         </div>

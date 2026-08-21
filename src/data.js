@@ -1,5 +1,7 @@
 // Central content for the portfolio — edit here to update copy across the site.
 
+const base = import.meta.env.BASE_URL
+
 export const profile = {
   name: 'Ei Pyae Kyaw',
   nickname: 'Kathryn Ei',
@@ -193,8 +195,8 @@ export const projects = [
     github: 'https://github.com/eipyae1112004-ui/food-image-classification',
     year: '2024',
     media: [
-      { type: 'video', src: '/media/food-classification/live-camera-demo.mp4', label: 'Live Camera Demo' },
-      { type: 'video', src: '/media/food-classification/upload-image-demo.mp4', label: 'Upload Image Demo' },
+      { type: 'video', src: `${base}media/food-classification/live-camera-demo.mp4`, label: 'Live Camera Demo' },
+      { type: 'video', src: `${base}media/food-classification/upload-image-demo.mp4`, label: 'Upload Image Demo' },
     ],
   },
   {
@@ -209,7 +211,7 @@ export const projects = [
     github: 'https://github.com/eipyae1112004-ui/sp-bot-assistive-robot',
     year: '2023',
     media: [
-      { type: 'video', src: '/media/sp-bot/demo.mp4', label: 'SP-Bot Demo' },
+      { type: 'video', src: `${base}media/sp-bot/demo.mp4`, label: 'SP-Bot Demo' },
     ],
   },
   {
@@ -224,7 +226,7 @@ export const projects = [
     github: 'https://github.com/eipyae1112004-ui/unicycle',
     year: '2023',
     media: [
-      { type: 'video', src: '/media/unicycle/demo.mp4', label: 'UniCycle Demo' },
+      { type: 'video', src: `${base}media/unicycle/demo.mp4`, label: 'UniCycle Demo' },
     ],
   },
 ]

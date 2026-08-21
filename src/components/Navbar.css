@@ -98,9 +98,29 @@
   color: var(--navy-800);
 }
 
+.navbar__backdrop {
+  display: none;
+}
+
 @media (max-width: 840px) {
   .navbar__toggle {
     display: inline-flex;
+  }
+
+  .navbar__backdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(10, 20, 40, 0.5);
+    backdrop-filter: blur(2px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.35s ease;
+  }
+
+  .navbar__backdrop.navbar__backdrop--open {
+    opacity: 1;
+    pointer-events: auto;
   }
 
   .navbar__links {
@@ -120,7 +140,7 @@
     box-shadow: -20px 0 50px -20px rgba(0,0,0,0.4);
   }
 
-  .navbar__links--open {
+  .navbar__links.navbar__links--open {
     transform: translateX(0);
   }
 

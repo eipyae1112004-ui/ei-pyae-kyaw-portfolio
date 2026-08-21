@@ -42,6 +42,13 @@ export default function Navbar() {
     return () => observer.disconnect()
   }, [])
 
+  useEffect(() => {
+    document.body.style.overflow = open ? 'hidden' : ''
+    return () => {
+      document.body.style.overflow = ''
+    }
+  }, [open])
+
   const handleClick = (href) => {
     setOpen(false)
     setActive(href)
@@ -56,6 +63,12 @@ export default function Navbar() {
           </span>
           <span className="navbar__brand-name">Ei Pyae Kyaw</span>
         </a>
+
+        <div
+          className={`navbar__backdrop ${open ? 'navbar__backdrop--open' : ''}`}
+          onClick={() => setOpen(false)}
+          aria-hidden="true"
+        />
 
         <nav className={`navbar__links ${open ? 'navbar__links--open' : ''}`}>
           {links.map((link) => (
