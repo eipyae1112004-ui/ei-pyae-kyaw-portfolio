@@ -50,7 +50,7 @@ export default function Contact() {
         <h2 className="section-title reveal">
           Let's build something <span className="gradient-text">meaningful</span>
         </h2>
-        <p className="section-subtitle reveal" style={{ margin: '0 auto 3rem' }}>
+        <p className="section-subtitle reveal" style={{ margin: '0 auto 3rem', fontFamily: "var(--font-heading)", fontWeight: "500" }}>
           Whether it's a role, a collaboration, or just a good conversation about automation
           and technology — my inbox (and WhatsApp) are open.
         </p>

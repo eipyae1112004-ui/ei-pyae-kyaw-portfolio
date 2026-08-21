@@ -44,7 +44,7 @@ export default function Projects() {
       <div className="section-inner">
         <span className="eyebrow reveal">Recent Work</span>
         <h2 className="projects__heading reveal">PROJECTS</h2>
-        <p className="section-subtitle reveal">
+        <p className="section-subtitle reveal" style={{fontFamily: "var(--font-heading)", fontWeight: "500"}}>
           Every project here started with something that annoyed me or slowed someone down, and ended
           with a tool that quietly makes everyone's day easier.
         </p>
