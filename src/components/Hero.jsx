@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { HiArrowDown } from 'react-icons/hi'
 import { FiGithub, FiLinkedin, FiMail, FiMapPin, FiFileText } from 'react-icons/fi'
 import { profile } from '../data'
-import profileImg from '../assets/kath-smiling.jpg'
+import profileImg from '../assets/Kath_Laptop.jpg'
 import './Hero.css'
 
 function useTypewriter(words, { typeSpeed = 90, deleteSpeed = 45, pause = 1400 } = {}) {

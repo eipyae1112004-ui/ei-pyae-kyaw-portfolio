@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { HiMenu, HiX } from 'react-icons/hi'
+import logo from '../assets/logo.jpg'
 import './Navbar.css'
 
 const links = [
@@ -50,7 +51,9 @@ export default function Navbar() {
     <header className={`navbar ${scrolled ? 'navbar--scrolled' : ''}`}>
       <div className="navbar__inner">
         <a href="#home" className="navbar__brand" onClick={() => handleClick('#home')}>
-          <span className="navbar__brand-mark">EK</span>
+          <span className="navbar__brand-mark">
+            <img src={logo} alt="" />
+          </span>
           <span className="navbar__brand-name">Ei Pyae Kyaw</span>
         </a>
 

@@ -1,7 +1,8 @@
 import { useRef, useState } from 'react'
-import { FiGithub } from 'react-icons/fi'
+import { FiGithub, FiMaximize2 } from 'react-icons/fi'
 import { projects, profile } from '../data'
 import useReveal from '../hooks/useReveal'
+import ProjectModal from './ProjectModal'
 import './Projects.css'
 
 export default function Projects() {
@@ -9,6 +10,7 @@ export default function Projects() {
   const stripRef = useRef(null)
   const drag = useRef({ down: false, startX: 0, scrollLeft: 0, moved: false })
   const [isDragging, setIsDragging] = useState(false)
+  const [activeProject, setActiveProject] = useState(null)
 
   const onPointerDown = (e) => {
     const strip = stripRef.current
@@ -35,8 +37,9 @@ export default function Projects() {
     setIsDragging(false)
   }
 
-  const onCardClick = (e) => {
-    if (drag.current.moved) e.preventDefault()
+  const onSeeMoreClick = (project) => {
+    if (drag.current.moved) return
+    setActiveProject(project)
   }
 
   return (
@@ -74,16 +77,13 @@ export default function Projects() {
 
                 <p className="projects__film-desc">{project.summary}</p>
 
-                <a
-                  href={project.github}
-                  target="_blank"
-                  rel="noreferrer"
+                <button
+                  type="button"
                   className="btn btn-primary"
-                  onClick={onCardClick}
-                  draggable={false}
+                  onClick={() => onSeeMoreClick(project)}
                 >
-                  <FiGithub /> View on GitHub
-                </a>
+                  <FiMaximize2 /> See More
+                </button>
               </article>
             ))}
           </div>
@@ -95,6 +95,8 @@ export default function Projects() {
           </a>
         </div>
       </div>
+
+      <ProjectModal project={activeProject} onClose={() => setActiveProject(null)} />
     </section>
   )
 }

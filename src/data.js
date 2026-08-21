@@ -132,6 +132,19 @@ export const designTools = [
 
 export const projects = [
   {
+    id: 'agentic-rpa-assistant',
+    title: 'Agentic RPA Assistant',
+    subtitle: 'LLM-Driven Browser Automation',
+    tags: ['Python', 'Claude API', 'Playwright', 'Agentic AI'],
+    summary:
+      'An AI agent that drives a real browser to complete tasks from plain-English instructions, deciding each step itself.',
+    description:
+      "A proof-of-concept for agentic RPA: instead of scripting a browser workflow step by step, you describe a task in plain English — for example, \"go to Wikipedia, search for Alan Turing, and tell me his date of birth\" — and Claude figures out and drives a real Chromium browser itself, click by click. Built six browser tools (navigate, read text, find interactive elements, click, fill, press key) that Claude calls through the Anthropic SDK's tool-use loop, with each visible element tagged a reliable selector so Claude never has to guess page-specific CSS. The loop is capped at 15 steps per task as a safety limit, and finishes with a plain-text answer once Claude decides the task is done.",
+    github: 'https://github.com/eipyae1112004-ui/agentic-rpa-assistant',
+    year: '2026',
+    media: [],
+  },
+  {
     id: 'audit-automation',
     title: 'Web-based Audit Automation System',
     subtitle: 'RPA Internship — KLP LLP',

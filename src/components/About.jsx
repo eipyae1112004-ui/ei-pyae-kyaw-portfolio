@@ -3,7 +3,7 @@ import {
   FiZap, FiSearch, FiTool, FiCheckCircle, FiPlus, FiMinus,
 } from 'react-icons/fi'
 import { about, profile } from '../data'
-import smilingImg from '../assets/kath-smiling.jpg'
+import smilingImg from '../assets/Kath_Profile.jpg'
 import useReveal from '../hooks/useReveal'
 import IDBadge from './IDBadge'
 import './About.css'
