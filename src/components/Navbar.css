@@ -95,6 +95,8 @@
 
 .navbar__toggle {
   display: none;
+  position: relative;
+  z-index: 210;
   color: var(--navy-800);
 }
 
@@ -152,5 +154,9 @@
   .navbar__link:hover,
   .navbar__link--active {
     color: var(--sky-300);
+  }
+
+  .navbar__toggle--open {
+    color: var(--white);
   }
 }

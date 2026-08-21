@@ -66,6 +66,7 @@ export default function Navbar() {
 
         <div
           className={`navbar__backdrop ${open ? 'navbar__backdrop--open' : ''}`}
+          style={{ opacity: open ? 1 : 0, pointerEvents: open ? 'auto' : 'none' }}
           onClick={() => setOpen(false)}
           aria-hidden="true"
         />
@@ -84,7 +85,7 @@ export default function Navbar() {
         </nav>
 
         <button
-          className="navbar__toggle"
+          className={`navbar__toggle ${open ? 'navbar__toggle--open' : ''}`}
           aria-label="Toggle navigation menu"
           onClick={() => setOpen((v) => !v)}
         >
