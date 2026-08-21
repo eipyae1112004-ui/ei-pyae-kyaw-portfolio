@@ -106,7 +106,7 @@ export default function Skills() {
                 <span className="skills__chip skills__chip--primary" key={s}>{s}</span>
               ))}
             </div>
-            <p className="skills__panel-sub skills__panel-sub--spaced">Design tools</p>
+            {/* <p className="skills__panel-sub skills__panel-sub--spaced">Design tools</p>
             <div className="skills__design-list">
               {designTools.map((d) => (
                 <div className="skills__design-item" key={d}>
@@ -116,7 +116,7 @@ export default function Skills() {
                   {d}
                 </div>
               ))}
-            </div>
+            </div> */}
           </div>
 
           <div className="skills__panel reveal reveal-delay-3">

@@ -6,9 +6,9 @@ export default function IDBadge({ photo, name, role, className = '' }) {
       <svg className="id-badge__strap" viewBox="0 0 220 150" preserveAspectRatio="none" aria-hidden="true">
         <defs>
           <linearGradient id="strapFill" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stopColor="#faf0e7" />
-            <stop offset="50%" stopColor="#f6dde4" />
-            <stop offset="100%" stopColor="#faf0e7" />
+            <stop offset="0%" stopColor="#e4f1fb" />
+            <stop offset="50%" stopColor="#c8e0f4" />
+            <stop offset="100%" stopColor="#e4f1fb" />
           </linearGradient>
         </defs>
         <path
@@ -21,7 +21,7 @@ export default function IDBadge({ photo, name, role, className = '' }) {
         <path
           d="M64 150 C 8 110, 8 30, 64 10 C 96 -2, 124 -2, 156 10 C 212 30, 212 110, 156 150"
           fill="none"
-          stroke="#e8b3c2"
+          stroke="#8cc1e9"
           strokeWidth="1.5"
           strokeDasharray="1 9"
           strokeLinecap="round"

@@ -35,7 +35,7 @@
   border-radius: var(--radius-md);
   padding: 1rem 1.2rem;
   box-shadow: var(--shadow-card);
-  border: 2px solid rgba(217, 143, 163, 0.15);
+  border: 2px solid rgba(13, 102, 181, 0.15);
 }
 
 .about__pill-label {
@@ -87,7 +87,7 @@
   font-weight: 500;
   color: var(--blue-600);
   background: var(--sky-100);
-  border: 1px solid rgba(217, 143, 163, 0.18);
+  border: 1px solid rgba(13, 102, 181, 0.18);
   padding: 0.32rem 0.7rem;
   border-radius: 999px;
 }
@@ -95,7 +95,7 @@
 .about__bubble {
   position: relative;
   background: var(--white);
-  border: 2px solid rgba(217, 143, 163, 0.15);
+  border: 2px solid rgba(13, 102, 181, 0.15);
   border-radius: var(--radius-md);
   padding: 1.2rem 1.4rem;
   box-shadow: var(--shadow-card);
@@ -109,8 +109,8 @@
   width: 16px;
   height: 16px;
   background: var(--white);
-  border-left: 1px solid rgba(217, 143, 163, 0.12);
-  border-top: 1px solid rgba(217, 143, 163, 0.12);
+  border-left: 1px solid rgba(13, 102, 181, 0.12);
+  border-top: 1px solid rgba(13, 102, 181, 0.12);
   transform: rotate(45deg);
 }
 
@@ -141,11 +141,11 @@
 }
 
 .about__accordion-item {
-  border-bottom: 2px dashed rgba(217, 143, 163, 0.35);
+  border-bottom: 2px dashed rgba(13, 102, 181, 0.35);
 }
 
 .about__accordion-item:first-child {
-  border-top: 2px dashed rgba(217, 143, 163, 0.35);
+  border-top: 2px dashed rgba(13, 102, 181, 0.35);
 }
 
 .about__accordion-head {
@@ -257,7 +257,7 @@
 
 .about__cloud-mascot {
   font-size: 3rem;
-  filter: drop-shadow(3px 3px 0 rgba(74, 51, 36, 0.15));
+  filter: drop-shadow(3px 3px 0 rgba(18, 40, 75, 0.15));
 }
 
 .about__cloud-badge {
@@ -287,7 +287,7 @@
   content: '';
   width: 70px;
   height: 1px;
-  background: rgba(107, 74, 53, 0.4);
+  background: rgba(22, 52, 95, 0.4);
 }
 
 .about__cloud-steps {

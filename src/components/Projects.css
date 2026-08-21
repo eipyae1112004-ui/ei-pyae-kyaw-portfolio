@@ -64,7 +64,7 @@
   scroll-snap-align: start;
   width: min(320px, 78vw);
   background: var(--white);
-  border: 2px solid rgba(217, 143, 163, 0.15);
+  border: 2px solid rgba(13, 102, 181, 0.15);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-card);
   padding: 1.7rem 1.6rem;

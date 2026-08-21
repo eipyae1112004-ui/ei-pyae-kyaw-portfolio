@@ -74,7 +74,7 @@
 
 .contact-card {
   background: var(--white);
-  border: 2px solid rgba(217, 143, 163, 0.18);
+  border: 2px solid rgba(13, 102, 181, 0.18);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-card);
   padding: 2rem 1.4rem;

@@ -30,8 +30,8 @@
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(rgba(107, 74, 53, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(107, 74, 53, 0.05) 1px, transparent 1px);
+    linear-gradient(rgba(22, 52, 95, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(22, 52, 95, 0.05) 1px, transparent 1px);
   background-size: 46px 46px;
   mask-image: radial-gradient(circle at 30% 30%, black, transparent 75%);
 }
@@ -205,7 +205,7 @@
   color: var(--navy-700);
   background: var(--white);
   border: 2px solid var(--blue-400);
-  box-shadow: 3px 3px 0 rgba(74, 51, 36, 0.08);
+  box-shadow: 3px 3px 0 rgba(18, 40, 75, 0.08);
   transition: all 0.25s ease;
 }
 
@@ -246,7 +246,7 @@
 .hero__orbit-ring {
   position: absolute;
   inset: -22px;
-  border: 1.5px solid rgba(217, 143, 163, 0.4);
+  border: 1.5px solid rgba(13, 102, 181, 0.4);
   border-radius: 50%;
   animation: spinSlow linear infinite;
 }
@@ -258,7 +258,7 @@
 
 .hero__orbit-ring--2 {
   inset: -34px;
-  border-color: rgba(226, 163, 181, 0.28);
+  border-color: rgba(67, 139, 196, 0.28);
   transform: rotate(10deg) scaleY(0.88);
   animation-duration: 30s;
   animation-direction: reverse;
@@ -280,7 +280,7 @@
   border-radius: 50%;
   overflow: hidden;
   border: 6px solid var(--white);
-  box-shadow: 6px 6px 0 rgba(74, 51, 36, 0.1), 0 30px 60px -20px rgba(74, 51, 36, 0.3);
+  box-shadow: 6px 6px 0 rgba(18, 40, 75, 0.1), 0 30px 60px -20px rgba(18, 40, 75, 0.3);
   animation: floatY 6s ease-in-out infinite;
 }
 
