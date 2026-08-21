@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { HiMenu, HiX } from 'react-icons/hi'
-import logo from '../assets/logo.jpg'
+import logo from '../assets/logo.png'
 import './Navbar.css'
 
 const links = [
