@@ -19,8 +19,7 @@ export const profile = {
     "I build software that quietly makes people's lives easier — automating the tedious, connecting the disconnected, and turning real-world problems into working products.",
   arcText: 'We believe every line of code should make someone’s day a little easier',
   objective:
-    "My objective is simple: keep learning by building, and turn real inconveniences — slow audits, lonely seniors, confusing systems — into working, human-centered products. I move fluidly between RPA, full-stack web, and embedded systems, always chasing the moment technology quietly makes someone's day easier.",
-}
+"My belief is simple: the best way to understand systems is to build them, and the best reason to build is to make someone's life easier. Full-stack, RPA, and embedded developer solving real-world friction."}
 
 export const about = {
   bio: "Hello! I'm Ei Pyae Kyaw, also known as Kathryn Ei — a developer who genuinely enjoys the moment a messy, manual process turns into something clean and automatic. From automating audits at KLP LLP to building facial recognition, robotics, and ML projects on the side, I move fluidly between RPA, full-stack web, and embedded systems, always chasing tech that quietly makes someone's day easier.",
@@ -36,19 +35,19 @@ export const about = {
     points: [
       {
         heading: 'Solve real problems first',
-        text: "Code is a means, not the point. I start from a real inconvenience — a slow audit process, a lonely senior, a confusing parking system — and work backwards to the tech.",
+        text: "Code is just the vehicle, not the destination. I look for the places where life gets unnecessarily frustrating—a bottlenecked audit, a chaotic system — and work backwards to the tech.",
       },
       {
         heading: 'Automate the boring, protect the human',
-        text: "I love RPA and automation because it removes drudgery, not people. The goal is always to free up time for the things that actually need a human touch.",
+        text: "I build automations to eliminate cognitive clutter, not human value. The goal is always to hand people back their time, focus, and energy for the work and connections that actually matter.",
       },
       {
         heading: 'Learn by building, not just reading',
-        text: 'Every project in my portfolio — from facial recognition to assistive robots — exists because I wanted to understand something deeply enough to ship it.',
+        text: 'Tutorials build familiarity, but shipping builds intuition. Whether wiring edge devices for real-time vision or architecting full-stack platforms, I believe you only truly understand how a system behaves when you get your hands dirty and make it work in the real world.',
       },
       {
-        heading: 'Detail is a form of respect',
-        text: "Whether it's a database schema or a UI spacing choice, I sweat the small stuff. Careless details compound into unreliable systems.",
+        heading: 'Polish is respect in disguise',
+        text: "The smallest details—clean database constraints, thoughtful UI spacing — are what separate a fragile prototype from a reliable tool. Caring about the invisible craft is how I show respect to the person on the other end of the screen.",
       },
     ],
   },

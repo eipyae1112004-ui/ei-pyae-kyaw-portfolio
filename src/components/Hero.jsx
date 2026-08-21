@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { HiArrowDown } from 'react-icons/hi'
-import { FiGithub, FiLinkedin, FiPhone, FiMail, FiMapPin } from 'react-icons/fi'
+import { FiGithub, FiLinkedin, FiMail, FiMapPin, FiFileText } from 'react-icons/fi'
 import { profile } from '../data'
 import profileImg from '../assets/kath-smiling.jpg'
 import './Hero.css'
@@ -46,7 +46,7 @@ export default function Hero() {
         <div className="hero__grid" />
       </div>
 
-      <div className="hero__inner">
+      <div className="hero__inner" style={{ marginTop: '-1rem' }}>
         <div className="hero__layout">
           <div className="hero__intro">
             <p className="hero__greeting">Hi, I'm</p>
@@ -54,10 +54,10 @@ export default function Hero() {
               {profile.name}</h1>
               <h1><span className="gradient-text">({profile.nickname})</span></h1> 
             
-            <h2 className="hero__role">
+            <h1 className="hero__role" style={{ paddingTop: '0.5rem', fontSize: '1.5rem' }}>
               I'm a <span className="hero__typed">{typed}</span>
               <span className="hero__cursor" aria-hidden="true">|</span>
-            </h2>
+            </h1>
           </div>
 
           <div className="hero__portrait" >
@@ -82,26 +82,28 @@ export default function Hero() {
           </div>
 
           <div className="hero__quicklinks" >
-            <a href={`tel:${profile.phone.replace(/\s+/g, '')}`} className="hero__quicklink">
-              <FiPhone size={16} /> {profile.phone}
+            <a href={profile.linkedin} target="_blank" rel="noreferrer" className="hero__quicklink" style={{ fontSize: '1.2rem' }}>
+              <FiLinkedin size={25} /> LinkedIn
             </a>
-            <a href={`mailto:${profile.email}`} className="hero__quicklink">
-              <FiMail size={16} /> {profile.email}
+            <a href={`mailto:${profile.email}`} className="hero__quicklink" style={{ fontSize: '1.2rem' }}>
+              <FiMail size={25} /> {profile.email}
             </a>
-            <span className="hero__quicklink hero__quicklink--static">
-              <FiMapPin size={16} /> {profile.location}
+            <span className="hero__quicklink hero__quicklink--static" style={{ fontSize: '1.2rem' }}>
+              <FiMapPin size={25} /> {profile.location}
             </span>
           </div>
         </div>
 
-        <div className="hero__objective">
+        <div className="hero__objective" style={{ marginTop: '-0.5rem', fontSize: '1.2rem' }}>
           <span className="eyebrow">Objective</span>
-          <p>{profile.objective}</p>
+          <p style={{fontFamily: "var(--font-heading)", fontWeight: "500"}}>{profile.objective}</p>
         </div>
 
         <div className="hero__actions">
           <a href="#projects" className="btn btn-primary">View My Work</a>
-          <a href="#contact" className="btn btn-ghost">Let's Connect</a>
+          <a href="/Ei-Pyae-Kyaw-Resume.pdf" target="_blank" rel="noreferrer" className="btn btn-ghost">
+            <FiFileText /> Resume
+          </a>
         </div>
 
         <div className="hero__socials">

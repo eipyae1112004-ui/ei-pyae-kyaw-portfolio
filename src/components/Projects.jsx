@@ -45,9 +45,8 @@ export default function Projects() {
         <span className="eyebrow reveal">Recent Work</span>
         <h2 className="projects__heading reveal">PROJECTS</h2>
         <p className="section-subtitle reveal">
-          A snapshot of what I've shipped — from production automation at work to
-          independent explorations in AI, embedded systems, and full-stack apps.
-          Drag to browse.
+          Every project here started with something that annoyed me or slowed someone down, and ended
+          with a tool that quietly makes everyone's day easier.
         </p>
 
         <div className="projects__filmstrip-wrap reveal reveal-delay-1">
