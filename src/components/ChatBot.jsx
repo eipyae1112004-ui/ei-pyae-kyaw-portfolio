@@ -1,13 +1,14 @@
 import { useEffect, useRef, useState } from 'react'
 import { FiMessageCircle, FiSend, FiX } from 'react-icons/fi'
-import { profile, about, coreSkills, technicalSkills, designTools, certifications, projects } from '../data'
+import { profile, coreSkills, technicalSkills, designTools, certifications, projects } from '../data'
+import logo from '../assets/logo.png'
 import './ChatBot.css'
 
 const SUGGESTIONS = [
-  'What are your skills?',
-  'Tell me about your projects',
-  'What is your education?',
-  'How can I contact you?',
+  "What's she good at?",
+  'Show me her projects',
+  "Where'd she study?",
+  'How do I reach her?',
 ]
 
 function projectList() {
@@ -16,69 +17,95 @@ function projectList() {
     .join('\n')
 }
 
+// Common words long enough to pass the length filter but generic enough to false-match
+// a project by accident (e.g. "real" inside "Real-time Facial Recognition" when someone
+// just asks "are you real?").
+const STOPWORDS = new Set([
+  'about', 'tell', 'what', 'have', 'been', 'from', 'then', 'than', 'will', 'does', 'know',
+  'want', 'need', 'real', 'made', 'work', 'this', 'that', 'person', 'human', 'people',
+  'could', 'would', 'should', 'your', 'their', 'being', 'there', 'which',
+])
+
 function findProject(text) {
+  const words = text
+    .toLowerCase()
+    .split(/[^a-z0-9]+/)
+    .filter((w) => w.length > 4 && !STOPWORDS.has(w))
   return projects.find((p) => {
     const haystack = `${p.id} ${p.title} ${p.subtitle} ${p.tags.join(' ')}`.toLowerCase()
-    return text.split(/\s+/).some((word) => word.length > 3 && haystack.includes(word))
+    return words.some((word) => haystack.includes(word))
   })
 }
 
+function projectReply(project) {
+  return `${project.title} (${project.year})! ${project.summary} I used ${project.tags.join(', ')} for this one.${project.github ? ` Code's here if you want to peek: ${project.github}` : ''}`
+}
+
+// All responses speak AS Kathryn (first person) — she's an AI stand-in for me, not a
+// separate assistant describing me from the outside.
 const INTENTS = [
   {
     name: 'greeting',
-    keywords: ['hi', 'hello', 'hey', 'yo', 'sup'],
-    respond: () =>
-      `Hi! I'm a quick FAQ bot for ${profile.name}'s portfolio. Ask me about her skills, projects, education, or how to get in touch.`,
+    keywords: ['hi', 'hello', 'hey', 'yo', 'sup', 'good morning', 'good afternoon', 'good evening'],
+    respond: () => 'Heyy, good to meet you! 😊 What do you want to know about me?',
   },
   {
     name: 'thanks',
-    keywords: ['thanks', 'thank you', 'thx', 'appreciate'],
-    respond: () => "You're welcome! Anything else you'd like to know?",
+    keywords: ['thanks', 'thank you', 'thx', 'appreciate', 'nice', 'cool', 'great'],
+    respond: () => "You're so welcome! Anything else you wanna ask? 💙",
+  },
+  {
+    name: 'is-ai',
+    // A custom predicate instead of fixed phrases: natural phrasing like "are you a real
+    // person or an AI?" has words in between that a rigid "are you real" keyword would miss.
+    test: (text) => /\bare you\b/.test(text) && /\b(ai|bot|robot|human|real|program|chatbot)\b/.test(text),
+    respond: () =>
+      "Haha, good question — I'm an AI chatbot version of Kathryn, not literally her typing right now 😄 But everything I tell you about her (me?) is 100% accurate, promise!",
   },
   {
     name: 'education',
-    keywords: ['education', 'degree', 'school', 'study', 'studies', 'polytechnic', 'diploma', 'university'],
+    keywords: ['education', 'degree', 'school', 'study', 'studies', 'studying', 'polytechnic', 'diploma', 'university', 'where did she study', "where'd she study"],
     respond: () =>
-      `${about.education.degree} at ${about.education.school} (${about.education.period}). ${about.education.note}.`,
+      "I'm doing a Diploma in Computer Engineering at Singapore Polytechnic (2023–2026), specializing in Computer Application!",
   },
   {
     name: 'experience',
-    keywords: ['experience', 'internship', 'intern', 'work experience', 'klp', 'job history'],
+    keywords: ['experience', 'internship', 'intern', 'work experience', 'klp', 'job history', 'worked'],
     respond: () =>
-      "She interned as an RPA Developer at KLP LLP, building a web-based audit automation platform (React, Python, SQL, Docker, UiPath) that cut audit processing time by ~40%. Ask about the 'audit automation' project for more detail.",
+      "I interned as an RPA Developer at KLP LLP — took their audit process from fully manual to a proper web app, and cut processing time by about 40%. Ask me about the 'audit automation' project if you want the full story!",
   },
   {
     name: 'skills',
-    keywords: ['skill', 'skills', 'technical', 'programming', 'language', 'languages', 'tech stack', 'stack', 'framework'],
+    keywords: ['skill', 'skills', 'technical', 'programming', 'language', 'languages', 'tech stack', 'stack', 'framework', 'good at', 'know how to'],
     respond: () =>
-      `Core strengths: ${coreSkills.slice(0, 4).map((s) => s.name).join(', ')}.\n\nProficient in: ${technicalSkills.proficient.join(', ')}.\n\nTools & platforms: ${technicalSkills.tools.slice(0, 8).join(', ')}, and more.`,
+      `I work across a bunch of stuff honestly — my strongest areas are ${coreSkills.slice(0, 3).map((s) => s.name).join(', ')}. Day-to-day I use ${technicalSkills.proficient.slice(0, 8).join(', ')}, and more. Tools-wise: ${technicalSkills.tools.slice(0, 6).join(', ')}... basically if it compiles, I've probably touched it 😅`,
   },
   {
     name: 'design',
     keywords: ['design', 'ui/ux', 'ux', 'figma', 'design tools'],
-    respond: () => `Design toolkit: ${designTools.join(', ')}.`,
+    respond: () => `Yep, I do some design work too — ${designTools.join(', ')}. Not purely a code person!`,
   },
   {
     name: 'certifications',
-    keywords: ['certificate', 'certification', 'certifications', 'award', 'awards', 'prize', 'championship'],
-    respond: () => `Certifications & awards:\n${certifications.map((c) => `• ${c}`).join('\n')}`,
+    keywords: ['certificate', 'certification', 'certifications', 'award', 'awards', 'prize', 'championship', 'won'],
+    respond: () => `I've got a few! 🏆\n${certifications.map((c) => `• ${c}`).join('\n')}`,
   },
   {
     name: 'resume',
     keywords: ['resume', 'cv', 'download'],
-    respond: () => 'You can download her resume using the "Resume" button in the Home section at the top of the page.',
+    respond: () => 'Yep! There\'s a Resume button up in the Home section — just click it and it downloads right away.',
   },
   {
     name: 'contact',
-    keywords: ['contact', 'email', 'reach', 'hire', 'linkedin', 'phone', 'whatsapp', 'get in touch'],
+    keywords: ['contact', 'email', 'reach', 'hire', 'linkedin', 'phone', 'whatsapp', 'get in touch', 'hire her', 'is she available'],
     respond: () =>
-      `You can reach her at ${profile.email}, on LinkedIn (${profile.linkedin.replace('https://', '')}), or via WhatsApp at ${profile.phone}. There's also a Contact section at the bottom of this page.`,
+      `Easiest way is email — ${profile.email} — I read those myself! I'm on LinkedIn too (${profile.linkedin.replace('https://', '')}), or WhatsApp at ${profile.phone} if you wanna be quick about it.`,
   },
   {
     name: 'projects',
-    keywords: ['project', 'projects', 'built', 'work', 'portfolio items', 'made'],
+    keywords: ['project', 'projects', 'built', 'work', 'portfolio items', 'made', 'created'],
     respond: () =>
-      `Here are her projects:\n${projectList()}\n\nAsk me about any one of these by name, or scroll to the Projects section to see demos and code links.`,
+      `I've built a bunch of things I'm proud of:\n${projectList()}\n\nAsk me about any of these by name and I'll happily talk your ear off, or scroll down to see the demos yourself!`,
   },
   {
     // Checked last on purpose: its keywords ("about her", "who is she", ...) are broad
@@ -90,8 +117,10 @@ const INTENTS = [
       'who is this', 'about you', 'about her', 'about him', 'about kathryn', 'about ei',
       'tell me about her', 'tell me about him', 'tell me about kathryn', 'tell me about ei',
       'introduce yourself', 'introduce her', 'yourself', 'her background', 'background', 'bio',
+      'tell me about yourself',
     ],
-    respond: () => about.bio,
+    respond: () =>
+      "That's me! 😄 I'm Ei Pyae Kyaw, also known as Kathryn Ei. I'm the kind of developer who can't leave a messy, manual process alone until I've automated it — I've done RPA work, built facial recognition and robotics projects on the side, and I move pretty fluidly between RPA, full-stack, and embedded systems. Basically: I like tech that quietly makes someone's day easier.",
   },
 ]
 
@@ -105,21 +134,22 @@ function matchesKeyword(text, keyword) {
 
 function getResponse(rawText) {
   const text = rawText.toLowerCase().trim()
-  if (!text) return "Sorry, I didn't catch that — could you rephrase?"
+  if (!text) return "Sorry, didn't catch that — could you say it again?"
 
   const project = findProject(text)
   if (project && /project|tell me|what is|about|explain/.test(text)) {
-    return `${project.title} (${project.year}) — ${project.summary}\n\nTech: ${project.tags.join(', ')}.${project.github ? `\nCode: ${project.github}` : ''}`
+    return projectReply(project)
   }
 
-  // Each intent scores 1 if ANY of its keyword phrasings match, not a count of matches —
-  // otherwise an intent with several overlapping synonyms (like "who", which lists both
-  // "about her" and "tell me about her") wins purely by having more redundant phrasings,
-  // even against a more specific intent like "skills" that only needed one keyword to match.
+  // Each intent scores 1 if it matches at all, not a count of matches — otherwise an intent
+  // with several overlapping synonyms (like "who", which lists both "about her" and "tell me
+  // about her") wins purely by having more redundant phrasings, even against a more specific
+  // intent like "skills" that only needed one keyword to match.
   let best = null
   let bestScore = 0
   for (const intent of INTENTS) {
-    const score = intent.keywords.some((k) => matchesKeyword(text, k)) ? 1 : 0
+    const matched = intent.test ? intent.test(text) : intent.keywords.some((k) => matchesKeyword(text, k))
+    const score = matched ? 1 : 0
     if (score > bestScore) {
       best = intent
       bestScore = score
@@ -127,18 +157,15 @@ function getResponse(rawText) {
   }
 
   if (best) return best.respond()
+  if (project) return projectReply(project)
 
-  if (project) {
-    return `${project.title} (${project.year}) — ${project.summary}\n\nTech: ${project.tags.join(', ')}.${project.github ? `\nCode: ${project.github}` : ''}`
-  }
-
-  return "I'm just a simple FAQ bot, so I'm not sure about that one. Try asking about her skills, projects, education, or how to get in touch — or email her directly at " + profile.email + "."
+  return `Hmm, I'm not totally sure about that one! I mostly know about my skills, projects, education, and how to reach me — try asking one of those? Or just email me directly: ${profile.email}`
 }
 
 export default function ChatBot() {
   const [open, setOpen] = useState(false)
   const [messages, setMessages] = useState([
-    { from: 'bot', text: `Hi, I'm here to answer quick questions about ${profile.nickname}. Try one of the suggestions below, or type your own!` },
+    { from: 'bot', text: "Hii! I'm an AI version of Kathryn 👋 Ask me about my skills, projects, education, or how to reach me — or just tap a suggestion below!" },
   ])
   const [input, setInput] = useState('')
   const [typing, setTyping] = useState(false)
@@ -172,11 +199,17 @@ export default function ChatBot() {
   return (
     <div className="chatbot">
       {open && (
-        <div className="chatbot__window" role="dialog" aria-label="Portfolio FAQ chat">
+        <div className="chatbot__window" role="dialog" aria-label="Chat with an AI version of Kathryn">
           <div className="chatbot__header">
-            <div>
-              <p className="chatbot__header-title">Ask about {profile.nickname}</p>
-              <p className="chatbot__header-sub">Quick FAQ bot · answers from her portfolio</p>
+            <div className="chatbot__profile">
+              <span className="chatbot__avatar">
+                <img src={logo} alt="" />
+                <span className="chatbot__avatar-dot" />
+              </span>
+              <div>
+                <p className="chatbot__header-title">Kath <span className="chatbot__ai-badge">AI</span></p>
+                <p className="chatbot__header-sub">AI version of me · ask me anything!</p>
+              </div>
             </div>
             <button className="chatbot__close" onClick={() => setOpen(false)} aria-label="Close chat">
               <FiX size={20} />
