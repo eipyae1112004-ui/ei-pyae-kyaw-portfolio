@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { FiMessageCircle, FiSend, FiX } from 'react-icons/fi'
 import { profile, coreSkills, technicalSkills, designTools, certifications, projects } from '../data'
-import logo from '../assets/logo.png'
+import logo from '../assets/kath-smiling.jpg'
 import './ChatBot.css'
 
 const SUGGESTIONS = [
@@ -60,19 +60,22 @@ const INTENTS = [
     // person or an AI?" has words in between that a rigid "are you real" keyword would miss.
     test: (text) => /\bare you\b/.test(text) && /\b(ai|bot|robot|human|real|program|chatbot)\b/.test(text),
     respond: () =>
-      "Haha, good question — I'm an AI chatbot version of Kathryn, not literally her typing right now 😄 But everything I tell you about her (me?) is 100% accurate, promise!",
+      "Haha, good question — I'm an AI chatbot version of Kathryn. But everything I tell you about her is 100% accurate 😄, promise!",
   },
   {
     name: 'education',
     keywords: ['education', 'degree', 'school', 'study', 'studies', 'studying', 'polytechnic', 'diploma', 'university', 'where did she study', "where'd she study"],
     respond: () =>
-      "I'm doing a Diploma in Computer Engineering at Singapore Polytechnic (2023–2026), specializing in Computer Application!",
+      "I graduated from a Diploma in Computer Engineering at Singapore Polytechnic (2023–2026), specializing in Computer Application!",
   },
   {
     name: 'experience',
     keywords: ['experience', 'internship', 'intern', 'work experience', 'klp', 'job history', 'worked'],
+    // Mentions a specific project by name, so a follow-up like "tell me about this project"
+    // should resolve to it — see relatedProjectId handling in getResponse.
+    relatedProjectId: 'audit-automation',
     respond: () =>
-      "I interned as an RPA Developer at KLP LLP — took their audit process from fully manual to a proper web app, and cut processing time by about 40%. Ask me about the 'audit automation' project if you want the full story!",
+      "I have interned as an RPA Developer at KLP LLP — took their audit process from fully manual to a proper web app, and cut processing time by about 40%. Ask me about the 'audit automation' project if you want the full story!",
   },
   {
     name: 'skills',
@@ -132,13 +135,31 @@ function matchesKeyword(text, keyword) {
   return new RegExp(`\\b${escapeRegex(keyword)}\\b`, 'i').test(text)
 }
 
-function getResponse(rawText) {
+// Anaphoric follow-ups — "this project", "that one", a bare "yes" — that only make sense
+// in light of whichever project the conversation was just talking about.
+const FOLLOWUP_PATTERNS = [
+  /\bthis project\b/, /\bthat project\b/, /\bthis one\b/, /\bthat one\b/,
+  /\btell me more\b/, /\bmore about (it|this|that)\b/, /\bexplain (it|this one|that one)\b/,
+]
+
+function isBareAffirmative(text) {
+  return /^(yes|yeah|yep|yup|sure|ok|okay|please|go ahead)[.!]?$/.test(text.trim())
+}
+
+// Returns { text, project }: `project` is whichever project this reply was about (if any),
+// so the caller can remember it for resolving a follow-up like "tell me about this project"
+// on the NEXT message — plain keyword matching alone has no memory of what was just said.
+function getResponse(rawText, lastProject) {
   const text = rawText.toLowerCase().trim()
-  if (!text) return "Sorry, didn't catch that — could you say it again?"
+  if (!text) return { text: "Sorry, didn't catch that — could you say it again?", project: null }
+
+  if (lastProject && (FOLLOWUP_PATTERNS.some((re) => re.test(text)) || isBareAffirmative(text))) {
+    return { text: projectReply(lastProject), project: lastProject }
+  }
 
   const project = findProject(text)
   if (project && /project|tell me|what is|about|explain/.test(text)) {
-    return projectReply(project)
+    return { text: projectReply(project), project }
   }
 
   // Each intent scores 1 if it matches at all, not a count of matches — otherwise an intent
@@ -156,10 +177,16 @@ function getResponse(rawText) {
     }
   }
 
-  if (best) return best.respond()
-  if (project) return projectReply(project)
+  if (best) {
+    const relatedProject = best.relatedProjectId ? projects.find((p) => p.id === best.relatedProjectId) : null
+    return { text: best.respond(), project: relatedProject }
+  }
+  if (project) return { text: projectReply(project), project }
 
-  return `Hmm, I'm not totally sure about that one! I mostly know about my skills, projects, education, and how to reach me — try asking one of those? Or just email me directly: ${profile.email}`
+  return {
+    text: `Hmm, I'm not totally sure about that one! I mostly know about my skills, projects, education, and how to reach me — try asking one of those? Or just email me directly: ${profile.email}`,
+    project: null,
+  }
 }
 
 export default function ChatBot() {
@@ -170,6 +197,7 @@ export default function ChatBot() {
   const [input, setInput] = useState('')
   const [typing, setTyping] = useState(false)
   const scrollRef = useRef(null)
+  const lastProjectRef = useRef(null)
 
   useEffect(() => {
     if (scrollRef.current) {
@@ -185,7 +213,8 @@ export default function ChatBot() {
     setTyping(true)
     const delay = 450 + Math.random() * 350
     setTimeout(() => {
-      const reply = getResponse(trimmed)
+      const { text: reply, project } = getResponse(trimmed, lastProjectRef.current)
+      if (project) lastProjectRef.current = project
       setMessages((m) => [...m, { from: 'bot', text: reply }])
       setTyping(false)
     }, delay)
