@@ -36,11 +36,6 @@ const INTENTS = [
     respond: () => "You're welcome! Anything else you'd like to know?",
   },
   {
-    name: 'who',
-    keywords: ['who are you', 'about you', 'about kathryn', 'about ei', 'yourself', 'bio'],
-    respond: () => about.bio,
-  },
-  {
     name: 'education',
     keywords: ['education', 'degree', 'school', 'study', 'studies', 'polytechnic', 'diploma', 'university'],
     respond: () =>
@@ -85,7 +80,28 @@ const INTENTS = [
     respond: () =>
       `Here are her projects:\n${projectList()}\n\nAsk me about any one of these by name, or scroll to the Projects section to see demos and code links.`,
   },
+  {
+    // Checked last on purpose: its keywords ("about her", "who is she", ...) are broad
+    // enough to overlap with more specific questions like "tell me about her skills".
+    // Placing it last means a tie in keyword score never beats an earlier, more specific intent.
+    name: 'who',
+    keywords: [
+      'who are you', 'who is she', 'who is he', 'who is her', 'who is kathryn', 'who is ei',
+      'who is this', 'about you', 'about her', 'about him', 'about kathryn', 'about ei',
+      'tell me about her', 'tell me about him', 'tell me about kathryn', 'tell me about ei',
+      'introduce yourself', 'introduce her', 'yourself', 'her background', 'background', 'bio',
+    ],
+    respond: () => about.bio,
+  },
 ]
+
+function escapeRegex(s) {
+  return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+}
+
+function matchesKeyword(text, keyword) {
+  return new RegExp(`\\b${escapeRegex(keyword)}\\b`, 'i').test(text)
+}
 
 function getResponse(rawText) {
   const text = rawText.toLowerCase().trim()
@@ -96,10 +112,14 @@ function getResponse(rawText) {
     return `${project.title} (${project.year}) — ${project.summary}\n\nTech: ${project.tags.join(', ')}.${project.github ? `\nCode: ${project.github}` : ''}`
   }
 
+  // Each intent scores 1 if ANY of its keyword phrasings match, not a count of matches —
+  // otherwise an intent with several overlapping synonyms (like "who", which lists both
+  // "about her" and "tell me about her") wins purely by having more redundant phrasings,
+  // even against a more specific intent like "skills" that only needed one keyword to match.
   let best = null
   let bestScore = 0
   for (const intent of INTENTS) {
-    const score = intent.keywords.filter((k) => text.includes(k)).length
+    const score = intent.keywords.some((k) => matchesKeyword(text, k)) ? 1 : 0
     if (score > bestScore) {
       best = intent
       bestScore = score
